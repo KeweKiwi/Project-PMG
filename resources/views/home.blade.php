@@ -32,8 +32,153 @@
         }
 
         .header-home {
-            background-color: #1A1A1A;
             color: #F7F2EB;
+        }
+
+        .header-shell {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            border: 1px solid rgba(247, 242, 235, 0.14);
+            border-radius: 999px;
+            background:
+                linear-gradient(180deg, rgba(20, 20, 20, 0.82), rgba(12, 12, 12, 0.76));
+            box-shadow: 0 20px 70px rgba(10, 10, 10, 0.28);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            overflow: hidden;
+        }
+
+        .header-shell::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(255, 255, 255, 0.06), transparent 24%, transparent 76%, rgba(255, 255, 255, 0.04)),
+                linear-gradient(180deg, rgba(216, 178, 138, 0.08), transparent 42%);
+            pointer-events: none;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+            min-width: 0;
+            padding: 0.7rem 1rem 0.7rem 1.2rem;
+        }
+
+        .header-brand::after {
+            content: "";
+            width: 1px;
+            height: 2.25rem;
+            background: linear-gradient(180deg, rgba(247, 242, 235, 0.18), rgba(247, 242, 235, 0.04));
+        }
+
+        .header-logo {
+            display: block;
+            width: auto;
+            height: 2rem;
+            object-fit: contain;
+            filter: brightness(1.04);
+        }
+
+        .header-brand-note {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(232, 221, 212, 0.54);
+            white-space: nowrap;
+        }
+
+        .header-nav {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.15rem;
+            margin-left: auto;
+            padding: 0 0.4rem;
+        }
+
+        .header-link {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.95rem 1rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: rgba(232, 221, 212, 0.68);
+            transition:
+                color 350ms ease,
+                transform 350ms ease;
+        }
+
+        .header-link::after {
+            content: "";
+            position: absolute;
+            left: 1rem;
+            right: 1rem;
+            bottom: 0.78rem;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(216, 178, 138, 0.92), rgba(216, 178, 138, 0.12));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .header-link:hover {
+            color: rgba(247, 242, 235, 0.96);
+            transform: translateY(-1px);
+        }
+
+        .header-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        .header-cta {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.95rem 1.2rem;
+            border-left: 1px solid rgba(247, 242, 235, 0.1);
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(247, 242, 235, 0.9);
+            transition:
+                color 350ms ease,
+                background-color 350ms ease;
+        }
+
+        .header-cta::before {
+            content: "";
+            width: 0.45rem;
+            height: 0.45rem;
+            border-radius: 999px;
+            background: #d8b28a;
+            box-shadow: 0 0 0 0 rgba(216, 178, 138, 0.26);
+            transition: box-shadow 350ms ease, transform 350ms ease;
+        }
+
+        .header-cta:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .header-cta:hover::before {
+            transform: scale(1.04);
+            box-shadow: 0 0 0 8px rgba(216, 178, 138, 0.08);
         }
         
         .hero-heading {
@@ -202,6 +347,34 @@
             animation: heroSheenSweep 1800ms cubic-bezier(0.22, 1, 0.36, 1) 420ms 1;
         }
 
+        @keyframes ambientFloat {
+            0%, 100% {
+                transform: translate3d(0, 0, 0) scale(1);
+            }
+            50% {
+                transform: translate3d(0, -18px, 0) scale(1.04);
+            }
+        }
+
+        .ambient-orb {
+            animation: ambientFloat 7.5s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        .hero-frame {
+            transform: translateY(0);
+            transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body.hero-preload .hero-frame {
+            transform: translateY(24px);
+        }
+
+        .luxury-parallax {
+            will-change: transform;
+            transform: translate3d(0, 0, 0);
+        }
+
         .luxury-scroll-reveal {
             opacity: 0;
             transform: translateY(34px) scale(0.985);
@@ -220,11 +393,534 @@
             filter: blur(0);
         }
 
+        #timeline .luxury-scroll-reveal {
+            filter: none;
+        }
+
+        #contact .luxury-scroll-reveal,
+        .site-footer .luxury-scroll-reveal {
+            filter: none;
+        }
+
+        .section-divider {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-divider::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(44, 44, 44, 0.78), rgba(44, 44, 44, 0.08));
+            transform: scaleX(0.12);
+            transform-origin: left;
+            opacity: 0.28;
+            transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.1s ease;
+        }
+
+        .section-divider.is-visible::after {
+            transform: scaleX(1);
+            opacity: 1;
+        }
+
+        .project-card-shell {
+            transition: transform 650ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 650ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .project-card-shell:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 28px 80px rgba(44, 44, 44, 0.12);
+        }
+
+        .project-card-shell::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0) 35%, rgba(12,12,12,0.14) 100%);
+            opacity: 0;
+            transition: opacity 500ms ease;
+            pointer-events: none;
+        }
+
+        .project-card-shell:hover::after {
+            opacity: 1;
+        }
+
+        .timeline-step {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-step.luxury-scroll-reveal {
+            transform: translateY(24px);
+            filter: none;
+        }
+
+        .timeline-step::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.35rem;
+            bottom: 2rem;
+            width: 1px;
+            background: linear-gradient(180deg, rgba(44, 44, 44, 0.52), rgba(44, 44, 44, 0.08));
+            opacity: 0.3;
+            transform: scaleY(0.3);
+            transform-origin: top;
+            transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1), opacity 900ms ease;
+        }
+
+        .timeline-step::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -1px;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(44, 44, 44, 0.88), rgba(44, 44, 44, 0.08));
+            transform: scaleX(0.08);
+            transform-origin: left;
+            opacity: 0.4;
+            transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1), opacity 900ms ease;
+        }
+
+        .timeline-step.is-visible::before {
+            transform: scaleY(1);
+            opacity: 0.75;
+        }
+
+        .timeline-step.is-visible::after {
+            transform: scaleX(1);
+            opacity: 0.92;
+        }
+
+        .timeline-step-shell {
+            position: relative;
+            padding: 0.25rem 0;
+            border-radius: 1.5rem;
+            transition:
+                transform 750ms cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 750ms cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 750ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .timeline-step-shell::before {
+            content: "";
+            position: absolute;
+            left: -1.5rem;
+            top: 1rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 999px;
+            background: #d2691e;
+            opacity: 0;
+            transform: scale(0.4);
+            box-shadow: 0 0 0 0 rgba(210, 105, 30, 0.22);
+            transition:
+                opacity 650ms ease,
+                transform 650ms cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 650ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .timeline-step:hover .timeline-step-shell {
+            transform: translateX(8px);
+            background-color: rgba(247, 242, 235, 0.75);
+            box-shadow: 0 20px 50px rgba(44, 44, 44, 0.06);
+        }
+
+        .timeline-step:hover .timeline-step-shell::before {
+            opacity: 1;
+            transform: scale(1);
+            box-shadow: 0 0 0 12px rgba(210, 105, 30, 0.08);
+        }
+
+        .timeline-step:hover::after {
+            transform: scaleX(1);
+            opacity: 1;
+        }
+
+        .timeline-index {
+            min-width: 3rem;
+            transition:
+                color 650ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 650ms cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 650ms ease;
+        }
+
+        .timeline-title {
+            transition:
+                color 650ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 650ms cubic-bezier(0.16, 1, 0.3, 1),
+                letter-spacing 650ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .timeline-body {
+            transition:
+                color 650ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 650ms cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 650ms ease;
+        }
+
+        .timeline-step:hover .timeline-index {
+            color: #2c2c2c;
+            transform: translateY(-2px);
+            opacity: 1;
+        }
+
+        .timeline-step:hover .timeline-title {
+            color: #2c2c2c;
+            transform: translateX(4px);
+            letter-spacing: 0.01em;
+        }
+
+        .timeline-step:hover .timeline-body {
+            color: #4a4a4a;
+            transform: translateX(4px);
+        }
+
+        .contact-panel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-panel::before {
+            content: "";
+            position: absolute;
+            inset: -20% auto auto -12%;
+            width: 280px;
+            height: 280px;
+            border-radius: 999px;
+            background: radial-gradient(circle, rgba(210, 105, 30, 0.18) 0%, rgba(210, 105, 30, 0) 72%);
+            pointer-events: none;
+        }
+
+        .contact-panel::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 34%),
+                linear-gradient(180deg, rgba(232, 221, 212, 0.04), transparent 48%);
+            pointer-events: none;
+        }
+
+        .contact-shell {
+            position: relative;
+            z-index: 1;
+            max-width: 42rem;
+        }
+
+        .contact-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: rgba(232, 221, 212, 0.72);
+        }
+
+        .contact-kicker::before {
+            content: "";
+            display: block;
+            width: 2.5rem;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(210, 105, 30, 0.95), rgba(210, 105, 30, 0.12));
+        }
+
+        .contact-ledger {
+            margin-top: 3rem;
+            border-top: 1px solid rgba(232, 221, 212, 0.18);
+        }
+
+        .contact-ledger-item {
+            display: grid;
+            grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
+            gap: 1.25rem;
+            padding: 1.4rem 0;
+            border-bottom: 1px solid rgba(232, 221, 212, 0.12);
+            transition:
+                transform 650ms cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 650ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .contact-ledger-item:hover {
+            transform: translateX(8px);
+            border-color: rgba(232, 221, 212, 0.24);
+        }
+
+        .contact-ledger-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(232, 221, 212, 0.52);
+        }
+
+        .contact-ledger-value {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(247, 242, 235, 0.96);
+            transition: color 400ms ease;
+        }
+
+        .contact-ledger-link:hover {
+            color: #d8b28a;
+        }
+
+        .contact-map-card {
+            position: relative;
+            overflow: hidden;
+            margin-top: 1rem;
+            border: 1px solid rgba(232, 221, 212, 0.12);
+            border-radius: 1.25rem;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .contact-map-frame {
+            position: relative;
+            height: 11rem;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .contact-map-embed {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(1) contrast(1.05) brightness(0.88);
+            opacity: 0.82;
+            pointer-events: none;
+        }
+
+        .contact-map-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding: 1rem;
+            background: linear-gradient(180deg, rgba(10, 10, 10, 0.04) 0%, rgba(10, 10, 10, 0.62) 100%);
+        }
+
+        .contact-map-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-radius: 999px;
+            border: 1px solid rgba(247, 242, 235, 0.16);
+            background: rgba(10, 10, 10, 0.42);
+            padding: 0.55rem 0.9rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: rgba(247, 242, 235, 0.94);
+            transition:
+                transform 400ms ease,
+                border-color 400ms ease,
+                background-color 400ms ease;
+        }
+
+        .contact-map-card:hover .contact-map-badge {
+            transform: translateY(-2px);
+            border-color: rgba(216, 178, 138, 0.36);
+            background: rgba(10, 10, 10, 0.58);
+        }
+
+        .contact-map-badge span:last-child {
+            letter-spacing: 0.08em;
+        }
+
+        .contact-side-note {
+            margin-top: 2.25rem;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: rgba(232, 221, 212, 0.46);
+        }
+
+        .contact-side-note span:last-child {
+            letter-spacing: 0.3em;
+            color: rgba(247, 242, 235, 0.78);
+        }
+
+        .site-footer {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at top left, rgba(210, 105, 30, 0.14), transparent 28%),
+                linear-gradient(180deg, #080808 0%, #111111 100%);
+        }
+
+        .site-footer::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(90deg, rgba(232, 221, 212, 0.06) 0, rgba(232, 221, 212, 0.06) 1px, transparent 1px, transparent 100%);
+            background-size: 22% 100%;
+            opacity: 0.22;
+            pointer-events: none;
+        }
+
+        .footer-shell {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-mark {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.34em;
+            text-transform: uppercase;
+            color: rgba(232, 221, 212, 0.68);
+        }
+
+        .footer-mark::before {
+            content: "";
+            display: block;
+            width: 2.75rem;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(210, 105, 30, 0.92), rgba(210, 105, 30, 0.14));
+        }
+
+        .footer-nav-link {
+            position: relative;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(232, 221, 212, 0.72);
+            transition: color 400ms ease, transform 400ms ease;
+        }
+
+        .footer-nav-link:hover {
+            color: rgba(247, 242, 235, 0.98);
+            transform: translateX(4px);
+        }
+
+        .footer-aside {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            padding-top: 0.5rem;
+        }
+
+        .footer-aside-copy {
+            max-width: 18rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            line-height: 1.8;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(232, 221, 212, 0.52);
+        }
+
+        .footer-back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(247, 242, 235, 0.86);
+            transition: color 400ms ease, transform 400ms ease;
+        }
+
+        .footer-back-link::before {
+            content: "";
+            display: block;
+            width: 2.25rem;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(216, 178, 138, 0.9), rgba(216, 178, 138, 0.16));
+        }
+
+        .footer-back-link:hover {
+            color: #d8b28a;
+            transform: translateX(4px);
+        }
+
+        .footer-meta-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(232, 221, 212, 0.42);
+        }
+
+        .footer-meta-value {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            line-height: 1.7;
+            color: rgba(247, 242, 235, 0.88);
+        }
+
+        @media (max-width: 1023px) {
+            .header-brand {
+                padding-right: 0.8rem;
+            }
+
+            .header-brand-note {
+                display: none;
+            }
+
+            .contact-ledger-item {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 0.55rem;
+            }
+
+            .contact-side-note {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .header-shell {
+                gap: 0.4rem;
+            }
+
+            .header-brand {
+                padding: 0.7rem 0.85rem 0.7rem 1rem;
+            }
+
+            .header-brand::after {
+                height: 1.75rem;
+            }
+
+            .header-logo {
+                height: 1.7rem;
+            }
+
+            .header-cta {
+                padding: 0.85rem 1rem;
+                border-left: 0;
+            }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .hero-intro-item,
             .hero-media,
             .hero-overlay,
-            .hero-sheen {
+            .hero-sheen,
+            .ambient-orb,
+            .luxury-parallax,
+            .hero-frame {
                 opacity: 1 !important;
                 transform: none !important;
                 filter: none !important;
@@ -485,26 +1181,8 @@
         }
     </script>
 </head>
-<body class="font-satoshi hero-preload">
-    <!-- Header -->
-    <header class="header-home fixed top-0 left-0 right-0 z-50 backdrop-blur-sm">
-        <div class="px-6 py-6">
-            <div class="flex justify-between items-center">
-                <div class="font-boska text-xl font-medium tracking-wide hero-intro-item" style="--intro-delay: 80ms;">
-                    Puncak Mas
-                    <span class="block text-xs font-satoshi font-light uppercase tracking-widest mx-6">GALLERY</span>
-                </div>
-                
-                <nav class="hidden md:flex space-x-8 hero-intro-item" style="--intro-delay: 180ms;">
-                    <a href="#hero" class="font-satoshi text-sm uppercase tracking-widest hover:text-accentOrange transition-colors">ABOUT</a>
-                    <a href="#about" class="font-satoshi text-sm uppercase tracking-widest hover:text-accentOrange transition-colors">SERVICES</a>
-                    <a href="#projects" class="font-satoshi text-sm uppercase tracking-widest hover:text-accentOrange transition-colors">PROJECTS</a>
-                    <a href="#timeline" class="font-satoshi text-sm uppercase tracking-widest hover:text-accentOrange transition-colors">TIMELINE</a>
-                    <a href="#contact" class="font-satoshi text-sm uppercase tracking-widest hover:text-accentOrange transition-colors">CONTACTS</a>
-                </nav>
-            </div>
-        </div>
-    </header>
+    <body class="font-satoshi hero-preload">
+    @include('partials.header')
 
     <!-- Hero Section -->
     <section id="hero" class="relative h-screen bg-cream overflow-hidden">
@@ -516,9 +1194,11 @@
             />
             <div class="absolute inset-0 bg-black/20 hero-overlay"></div>
             <div class="hero-sheen absolute inset-y-0 -left-1/4 w-1/3 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+            <div class="ambient-orb luxury-parallax absolute -top-12 right-[12%] h-56 w-56 rounded-full bg-white/10 blur-3xl" data-parallax-speed="0.16"></div>
+            <div class="ambient-orb luxury-parallax absolute bottom-[14%] left-[8%] h-32 w-32 rounded-full border border-white/20" data-parallax-speed="0.1"></div>
         </div>
         
-        <div class="relative h-full flex items-center">
+        <div class="relative h-full flex items-center hero-frame">
             <div class="absolute bottom-12 right-20 hero-intro-item" style="--intro-delay: 320ms;">
                 <button class="bg-darkCharcoal hover:bg-darkCharcoal/90 text-white mx-0 my-10 px-8 py-4 rounded-full font-satoshi text-sm uppercase tracking-widest transition-colors">
                     GET STARTED WITH US ↗
@@ -528,7 +1208,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 bg-lightGray">
+    <section id="about" class="py-24 bg-lightGray section-divider">
         <div class="px-6">
             <div class="grid grid-cols-12 gap-16">
                 <!-- Left column - Large heading -->
@@ -582,7 +1262,7 @@
     </section>
 
    <!-- Projects Section -->
-    <section id="projects" class="py-0 bg-lightGray relative overflow-hidden">
+    <section id="projects" class="py-0 bg-lightGray relative overflow-hidden section-divider">
         <!-- Horizontal grid lines -->
         <div class="absolute inset-0 pointer-events-none">
             <div class="h-full w-full relative">
@@ -623,7 +1303,7 @@
                             <!-- Slide 1 - First 3 projects -->
                             <div class="min-w-full grid grid-cols-3 h-full">
                                 <!-- Project 1 -->
-                                <div class="relative border-r border-gray-300 p-6 flex flex-col justify-between min-h-[300px]">
+                                <div class="project-card-shell relative border-r border-gray-300 p-6 flex flex-col justify-between min-h-[300px]">
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(0)">
                                         <div class="relative overflow-hidden mb-4 flex-1">
                                             <img 
@@ -645,7 +1325,7 @@
                                 </div>
 
                                 <!-- Project 2 -->
-                                <div class="relative border-r border-gray-300 p-6 flex flex-col justify-between min-h-[300px]">
+                                <div class="project-card-shell relative border-r border-gray-300 p-6 flex flex-col justify-between min-h-[300px]">
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(1)">
                                         <div class="relative overflow-hidden mb-4 flex-1">
                                             <img 
@@ -667,7 +1347,7 @@
                                 </div>
 
                                 <!-- Project 3 -->
-                                <div class="relative p-6 flex flex-col justify-between min-h-[300px]">
+                                <div class="project-card-shell relative p-6 flex flex-col justify-between min-h-[300px]">
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(2)">
                                         <div class="relative overflow-hidden mb-4 flex-1">
                                             <img 
@@ -692,7 +1372,7 @@
                             <!-- Slide 2 - Next 3 projects -->
                             <div class="min-w-full grid grid-cols-3 h-full">
                                 <!-- Project 4 -->
-                                <div class="relative border-r border-gray-300 p-6 flex flex-col justify-between min-h-[300px]">
+                                <div class="project-card-shell relative border-r border-gray-300 p-6 flex flex-col justify-between min-h-[300px]">
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(3)">
                                         <div class="relative overflow-hidden mb-4 flex-1">
                                             <img 
@@ -714,7 +1394,7 @@
                                 </div>
 
                                 <!-- Project 5 -->
-                                <div class="relative border-r border-gray-300 p-6 flex flex-col justify-between min-h-[300px]">
+                                <div class="project-card-shell relative border-r border-gray-300 p-6 flex flex-col justify-between min-h-[300px]">
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(4)">
                                         <div class="relative overflow-hidden mb-4 flex-1">
                                             <img 
@@ -736,7 +1416,7 @@
                                 </div>
 
                                 <!-- Project 6 -->
-                                <div class="relative p-6 flex flex-col justify-between min-h-[300px]">
+                                <div class="project-card-shell relative p-6 flex flex-col justify-between min-h-[300px]">
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(5)">
                                         <div class="relative overflow-hidden mb-4 flex-1">
                                             <img 
@@ -761,7 +1441,7 @@
                             <!-- Slide 3 - Last 2 projects -->
                             <div class="min-w-full grid grid-cols-3 h-full">
                                 <!-- Project 7 -->
-                                <div class="relative border-r border-gray-300 p-6 flex flex-col justify-between min-h-[300px]">
+                                <div class="project-card-shell relative border-r border-gray-300 p-6 flex flex-col justify-between min-h-[300px]">
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(6)">
                                         <div class="relative overflow-hidden mb-4 flex-1">
                                             <img 
@@ -783,7 +1463,7 @@
                                 </div>
 
                                 <!-- Project 8 -->
-                                <div class="relative border-r border-gray-300 p-6 flex flex-col justify-between min-h-[300px]">
+                                <div class="project-card-shell relative border-r border-gray-300 p-6 flex flex-col justify-between min-h-[300px]">
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(7)">
                                         <div class="relative overflow-hidden mb-4 flex-1">
                                             <img 
@@ -844,7 +1524,7 @@
     @include('partials.project-modal')
 
     <!-- Timeline Section -->
-    <section id="timeline" class="py-24 bg-white">
+    <section id="timeline" class="py-24 bg-white section-divider">
         <div class="px-6">
             <div class="grid grid-cols-12 gap-12">
                 <!-- Left column -->
@@ -868,96 +1548,96 @@
                 <!-- Right column - Timeline -->
                 <div class="col-span-12 lg:col-span-8">
                     <div class="space-y-8">
-                        <div class="group border-b border-warmBeige pb-8 hover:border-darkCharcoal transition-colors duration-300">
-                            <div class="flex items-start justify-between">
+                        <div class="group timeline-step border-b border-warmBeige pb-8 transition-colors duration-500">
+                            <div class="timeline-step-shell flex items-start justify-between gap-8">
                                 <div class="flex items-start space-x-8">
-                                    <span class="font-boska text-2xl font-light text-gray-400 group-hover:text-darkCharcoal transition-colors duration-300">01</span>
+                                    <span class="timeline-index font-boska text-2xl font-light text-gray-400">01</span>
                                     <div>
-                                        <h3 class="font-satoshi text-lg font-medium mb-2 group-hover:text-darkCharcoal transition-colors duration-300">Site Visit &amp; Get-to-Know Session</h3>
+                                        <h3 class="timeline-title font-satoshi text-lg font-medium mb-2 text-darkCharcoal">Site Visit &amp; Get-to-Know Session</h3>
                                     </div>
                                 </div>
                                 <div class="max-w-md">
-                                    <p class="font-satoshi text-sm text-gray-600 leading-relaxed">
+                                    <p class="timeline-body font-satoshi text-sm text-gray-600 leading-relaxed">
                                         Get to know what the client wants. We'll start by visiting your place to understand what you need, what styles you like, and what problems you're currently facing. It's all about getting on the same page.
                                     </p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="group border-b border-warmBeige pb-8 hover:border-darkCharcoal transition-colors duration-300">
-                            <div class="flex items-start justify-between">
+                        <div class="group timeline-step border-b border-warmBeige pb-8 transition-colors duration-500">
+                            <div class="timeline-step-shell flex items-start justify-between gap-8">
                                 <div class="flex items-start space-x-8">
-                                    <span class="font-boska text-2xl font-light text-gray-400 group-hover:text-darkCharcoal transition-colors duration-300">02</span>
+                                    <span class="timeline-index font-boska text-2xl font-light text-gray-400">02</span>
                                     <div>
-                                        <h3 class="font-satoshi text-lg font-medium mb-2 group-hover:text-darkCharcoal transition-colors duration-300">Quotation</h3>
+                                        <h3 class="timeline-title font-satoshi text-lg font-medium mb-2 text-darkCharcoal">Quotation</h3>
                                     </div>
                                 </div>
                                 <div class="max-w-md">
-                                    <p class="font-satoshi text-sm text-gray-600 leading-relaxed">
+                                    <p class="timeline-body font-satoshi text-sm text-gray-600 leading-relaxed">
                                         Based on your needs and the scope of the project, we'll send you a quotation that includes design and estimated execution costs.
                                     </p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="group border-b border-warmBeige pb-8 hover:border-darkCharcoal transition-colors duration-300">
-                            <div class="flex items-start justify-between">
+                        <div class="group timeline-step border-b border-warmBeige pb-8 transition-colors duration-500">
+                            <div class="timeline-step-shell flex items-start justify-between gap-8">
                                 <div class="flex items-start space-x-8">
-                                    <span class="font-boska text-2xl font-light text-gray-400 group-hover:text-darkCharcoal transition-colors duration-300">03</span>
+                                    <span class="timeline-index font-boska text-2xl font-light text-gray-400">03</span>
                                     <div>
-                                        <h3 class="font-satoshi text-lg font-medium mb-2 group-hover:text-darkCharcoal transition-colors duration-300">Down Payment (DP)</h3>
+                                        <h3 class="timeline-title font-satoshi text-lg font-medium mb-2 text-darkCharcoal">Down Payment (DP)</h3>
                                     </div>
                                 </div>
                                 <div class="max-w-md">
-                                    <p class="font-satoshi text-sm text-gray-600 leading-relaxed">
+                                    <p class="timeline-body font-satoshi text-sm text-gray-600 leading-relaxed">
                                         If you're happy with the quotation, we'll move forward with a down payment to lock in the project and start the design process.
                                     </p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="group border-b border-warmBeige pb-8 hover:border-darkCharcoal transition-colors duration-300">
-                            <div class="flex items-start justify-between">
+                        <div class="group timeline-step border-b border-warmBeige pb-8 transition-colors duration-500">
+                            <div class="timeline-step-shell flex items-start justify-between gap-8">
                                 <div class="flex items-start space-x-8">
-                                    <span class="font-boska text-2xl font-light text-gray-400 group-hover:text-darkCharcoal transition-colors duration-300">04</span>
+                                    <span class="timeline-index font-boska text-2xl font-light text-gray-400">04</span>
                                     <div>
-                                        <h3 class="font-satoshi text-lg font-medium mb-2 group-hover:text-darkCharcoal transition-colors duration-300">Design Process</h3>
+                                        <h3 class="timeline-title font-satoshi text-lg font-medium mb-2 text-darkCharcoal">Design Process</h3>
                                     </div>
                                 </div>
                                 <div class="max-w-md">
-                                    <p class="font-satoshi text-sm text-gray-600 leading-relaxed">
+                                    <p class="timeline-body font-satoshi text-sm text-gray-600 leading-relaxed">
                                         We'll work on your design and you'll get unlimited revisions-as long as the core design concept stays the same.
                                     </p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="group border-b border-warmBeige pb-8 hover:border-darkCharcoal transition-colors duration-300">
-                            <div class="flex items-start justify-between">
+                        <div class="group timeline-step border-b border-warmBeige pb-8 transition-colors duration-500">
+                            <div class="timeline-step-shell flex items-start justify-between gap-8">
                                 <div class="flex items-start space-x-8">
-                                    <span class="font-boska text-2xl font-light text-gray-400 group-hover:text-darkCharcoal transition-colors duration-300">05</span>
+                                    <span class="timeline-index font-boska text-2xl font-light text-gray-400">05</span>
                                     <div>
-                                        <h3 class="font-satoshi text-lg font-medium mb-2 group-hover:text-darkCharcoal transition-colors duration-300">FINAL MEASUREMENTS</h3>
+                                        <h3 class="timeline-title font-satoshi text-lg font-medium mb-2 text-darkCharcoal">Final Measurements</h3>
                                     </div>
                                 </div>
                                 <div class="max-w-md">
-                                    <p class="font-satoshi text-sm text-gray-600 leading-relaxed">
+                                    <p class="timeline-body font-satoshi text-sm text-gray-600 leading-relaxed">
                                         Once the design is approved, we'll do another round of detailed measurements to make sure everything fits perfectly.
                                     </p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="group border-b border-warmBeige pb-8 hover:border-darkCharcoal transition-colors duration-300">
-                            <div class="flex items-start justify-between">
+                        <div class="group timeline-step border-b border-warmBeige pb-8 transition-colors duration-500">
+                            <div class="timeline-step-shell flex items-start justify-between gap-8">
                                 <div class="flex items-start space-x-8">
-                                    <span class="font-boska text-2xl font-light text-gray-400 group-hover:text-darkCharcoal transition-colors duration-300">06</span>
+                                    <span class="timeline-index font-boska text-2xl font-light text-gray-400">06</span>
                                     <div>
-                                        <h3 class="font-satoshi text-lg font-medium mb-2 group-hover:text-darkCharcoal transition-colors duration-300">Execution</h3>
+                                        <h3 class="timeline-title font-satoshi text-lg font-medium mb-2 text-darkCharcoal">Execution</h3>
                                     </div>
                                 </div>
                                 <div class="max-w-md">
-                                    <p class="font-satoshi text-sm text-gray-600 leading-relaxed">
+                                    <p class="timeline-body font-satoshi text-sm text-gray-600 leading-relaxed">
                                         After everything is set, we move on to production and installation. This usually takes about 2 months, depending on the complexity of the project.
                                     </p>
                                 </div>
@@ -970,10 +1650,10 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="relative min-h-screen bg-black text-white">
-        <div class="absolute inset-0 grid grid-cols-12">
+    <section id="contact" class="relative min-h-screen bg-black text-white section-divider">
+        <div class="absolute inset-0 grid grid-cols-1 lg:grid-cols-12">
             <!-- Left side - Interior Image -->
-            <div class="col-span-6 relative">
+            <div class="relative min-h-[320px] lg:col-span-6">
                 <img 
                     src="1.jpg"
                     alt="Modern luxury interior design"
@@ -991,74 +1671,97 @@
             </div>
             
             <!-- Right side - Contact Information -->
-            <div class="col-span-5 bg-black flex flex-col justify-center px-12 py-16">
-                <!-- Main Heading -->
-                <div class="mb-16">
-                    <h2 class="font-boska text-4xl md:text-5xl font-light leading-tight mb-4">
-                        Get your dream<br />
-                        living with us.
-                    </h2>
-                    <div class="text-right">
-                        <span class="font-satoshi text-xs tracking-widest text-gray-400">(GET IN CONTACT<br/>WITH US)</span>
+            <div class="bg-black flex flex-col justify-center px-6 py-14 md:px-12 md:py-16 contact-panel lg:col-span-6">
+                <div class="contact-shell">
+                    <div class="mb-12 md:mb-14">
+                        <span class="contact-kicker">Contact</span>
+                        <h2 class="font-boska text-4xl md:text-5xl font-light leading-tight mt-5 mb-5">
+                            Private access to<br />
+                            Puncak Mas Gallery.
+                        </h2>
+                        <p class="font-satoshi max-w-xl text-sm leading-relaxed text-[#c9c1bb]">
+                            For consultations, appointments, or detailed project discussions, reach out directly through the lines below.
+                        </p>
                     </div>
-                </div>
-                
-                <!-- Contact Grid -->
-                <div class="grid grid-cols-2 gap-x-8 gap-y-12 text-xs">
-                    <!-- Row 1 -->
-                    <div>
-                        <h3 class="font-satoshi font-semibold tracking-widest mb-2">MALANG,</h3>
-                        <p class="font-satoshi text-gray-400">SURABAYA</p>
+
+                    <div class="contact-ledger">
+                        <div class="contact-ledger-item">
+                            <p class="contact-ledger-label">Contact Person</p>
+                            <a href="tel:+6285172392266" class="contact-ledger-value contact-ledger-link">
+                                +62 8517 2392 266 (Sheila)
+                            </a>
+                        </div>
+
+                        <div class="contact-ledger-item">
+                            <p class="contact-ledger-label">Email</p>
+                            <a href="mailto:puncakmasgallery@gmail.com" class="contact-ledger-value contact-ledger-link break-all">
+                                puncakmasgallery@gmail.com
+                            </a>
+                        </div>
+
+                        <div class="contact-ledger-item">
+                            <p class="contact-ledger-label">Instagram</p>
+                            <a href="https://www.instagram.com/puncakmasgallery/" target="_blank" rel="noreferrer" class="contact-ledger-value contact-ledger-link">
+                                @puncakmasgallery
+                            </a>
+                        </div>
+
+                        <div class="contact-ledger-item">
+                            <p class="contact-ledger-label">Address</p>
+                            <div>
+                                <a
+                                    href="https://maps.google.com/?q=Jl.+Soekarno+Hatta+No.2,+Kota+Malang,+Jawa+Timur+65142"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    class="contact-ledger-value contact-ledger-link"
+                                >
+                                    Jl. Soekarno Hatta No.2, Kota Malang, Jawa Timur 65142
+                                </a>
+
+                                <div class="contact-map-card">
+                                    <div class="contact-map-frame">
+                                        <iframe
+                                            title="Puncak Mas Gallery location"
+                                            src="https://maps.google.com/maps?q=Jl.+Soekarno+Hatta+No.2,+Kota+Malang,+Jawa+Timur+65142&z=16&output=embed"
+                                            loading="lazy"
+                                            referrerpolicy="no-referrer-when-downgrade"
+                                            class="contact-map-embed"
+                                        ></iframe>
+                                        <a
+                                            href="https://maps.google.com/?q=Jl.+Soekarno+Hatta+No.2,+Kota+Malang,+Jawa+Timur+65142"
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            class="contact-map-overlay"
+                                            aria-label="Open location in Google Maps"
+                                        >
+                                            <span class="contact-map-badge">
+                                                <span>Open</span>
+                                                <span>Google Maps</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-ledger-item">
+                            <p class="contact-ledger-label">Working Hour</p>
+                            <p class="contact-ledger-value">
+                                08.00 AM - 20.00 PM
+                            </p>
+                        </div>
                     </div>
-                    
-                    <div>
-                        <h3 class="font-satoshi font-semibold tracking-widest mb-2">OFFICE</h3>
-                        <p class="font-satoshi text-gray-400">+62</p>
-                    </div>
-                    
-                    <!-- Row 2 -->
-                    <div>
-                        <h3 class="font-satoshi font-semibold tracking-widest mb-2">INDONESIA</h3>
-                    </div>
-                    
-                    <div>
-                        <h3 class="font-satoshi font-semibold tracking-widest mb-2">APPOINTMENT</h3>
-                    </div>
-                    
-                    <!-- Row 3 -->
-                    <div>
-                        <h3 class="font-satoshi font-semibold tracking-widest mb-2">5PM</h3>
-                    </div>
-                    
-                    <div>
-                        <h3 class="font-satoshi font-semibold tracking-widest mb-2">HOUR</h3>
-                        <p class="font-satoshi text-gray-400">ONLY</p>
-                    </div>
-                    
-                    <!-- Row 4 -->
-                    <div>
-                        <h3 class="font-satoshi font-semibold tracking-widest mb-2">9PM</h3>
-                    </div>
-                    
-                    <div>
-                        <h3 class="font-satoshi font-semibold tracking-widest mb-2">CONTACT</h3>
-                        <p class="font-satoshi text-gray-400">US NOW!</p>
-                    </div>
-                </div>
-                
-                <!-- Bottom Contact Info -->
-                <div class="mt-16 space-y-2">
-                    <div class="flex items-center justify-between">
-                        <span class="font-satoshi text-gray-400">@PUNCAKMASGALLERY</span>
-                        <span class="font-satoshi font-semibold tracking-widest">+62 8224 3740 2700</span>
-                    </div>
-                    <div class="text-gray-400">
-                        <span class="font-satoshi tracking-widest">I N F O @ P M G . C O M</span>
+
+                    <div class="contact-side-note">
+                        <span>By Appointment Preferred</span>
+                        <span>Malang, East Java</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    @include('partials.footer')
 
     <script>
         @include('partials.project-modal-data')
@@ -1156,12 +1859,11 @@
             
             // Update modal content
             document.getElementById('modalProjectTitle').textContent = project.title;
-            document.getElementById('modalProjectCategory').textContent = project.category;
             document.getElementById('modalProjectDescription').textContent = project.description;
             document.getElementById('modalProjectYear').textContent = project.year;
             document.getElementById('modalProjectLocation').textContent = project.location;
-            document.getElementById('modalProjectArea').textContent = project.area;
-            document.getElementById('modalProjectDuration').textContent = project.duration;
+            document.getElementById('modalProjectDesigner').textContent = project.designer;
+            document.getElementById('modalProjectCategoryDetail').textContent = project.category;
             
             // Update features list
             const featuresList = document.getElementById('modalProjectFeatures');
@@ -1220,13 +1922,19 @@
         }
 
         function initLuxuryScrollAnimations() {
+            const sectionDividers = document.querySelectorAll('.section-divider');
             const revealGroups = [
                 { elements: document.querySelectorAll('#about .grid.grid-cols-12 > div'), baseDelay: 0, step: 130 },
                 { elements: document.querySelectorAll('#projects .grid.grid-cols-12 > div'), baseDelay: 80, step: 130 },
                 { elements: document.querySelectorAll('#projects > .flex.justify-center.items-center.py-8'), baseDelay: 220, step: 0 },
                 { elements: document.querySelectorAll('#timeline .grid.grid-cols-12 > div'), baseDelay: 0, step: 130 },
                 { elements: document.querySelectorAll('#timeline .group'), baseDelay: 140, step: 80 },
-                { elements: document.querySelectorAll('#contact .grid.grid-cols-11 > div'), baseDelay: 80, step: 130 },
+                { elements: document.querySelectorAll('#contact > .grid > div'), baseDelay: 40, step: 140 },
+                { elements: document.querySelectorAll('#contact .contact-shell > div'), baseDelay: 120, step: 120 },
+                { elements: document.querySelectorAll('#contact .contact-ledger-item'), baseDelay: 220, step: 80 },
+                { elements: document.querySelectorAll('.site-footer .footer-shell > div'), baseDelay: 80, step: 140 },
+                { elements: document.querySelectorAll('.site-footer .footer-shell > .mt-14 > div'), baseDelay: 200, step: 90 },
+                { elements: document.querySelectorAll('.site-footer .footer-shell > .mt-10'), baseDelay: 340, step: 0 },
             ];
 
             const revealItems = [];
@@ -1243,6 +1951,7 @@
 
             if (prefersReducedMotion || !('IntersectionObserver' in window)) {
                 revealItems.forEach((item) => item.classList.add('is-visible'));
+                sectionDividers.forEach((section) => section.classList.add('is-visible'));
                 return;
             }
 
@@ -1258,6 +1967,52 @@
             });
 
             revealItems.forEach((item) => revealObserver.observe(item));
+
+            const dividerObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                });
+            }, {
+                threshold: 0.12,
+                rootMargin: '0px 0px -10% 0px',
+            });
+
+            sectionDividers.forEach((section) => dividerObserver.observe(section));
+        }
+
+        function initLuxuryParallax() {
+            const parallaxItems = document.querySelectorAll('[data-parallax-speed]');
+
+            if (!parallaxItems.length || prefersReducedMotion) return;
+
+            const updateParallax = () => {
+                const viewportHeight = window.innerHeight || 1;
+
+                parallaxItems.forEach((item) => {
+                    const speed = Number(item.dataset.parallaxSpeed || 0);
+                    const rect = item.getBoundingClientRect();
+                    const itemCenter = rect.top + (rect.height / 2);
+                    const offset = ((itemCenter - (viewportHeight / 2)) / viewportHeight) * speed * -120;
+                    item.style.transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`;
+                });
+            };
+
+            let ticking = false;
+
+            const requestUpdate = () => {
+                if (ticking) return;
+                ticking = true;
+                window.requestAnimationFrame(() => {
+                    updateParallax();
+                    ticking = false;
+                });
+            };
+
+            updateParallax();
+            window.addEventListener('scroll', requestUpdate, { passive: true });
+            window.addEventListener('resize', requestUpdate);
         }
 
         function initHeroIntroAnimation() {
@@ -1359,6 +2114,7 @@
         updateSlider();
         initHeroIntroAnimation();
         initLuxuryScrollAnimations();
+        initLuxuryParallax();
     </script>
 </body>
 </html>

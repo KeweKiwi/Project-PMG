@@ -5,8 +5,7 @@ const projectsData = [
         category: "RESIDENTIAL DESIGN",
         year: "2023",
         location: "Malang, Indonesia",
-        area: "120 m²",
-        duration: "3 months",
+        designer: "Puncak Mas Gallery",
         description: "A garage is often seen as an afterthought—a purely utilitarian space hidden from the rest of the home. But at Puncak Mas Gallery, we believe the garage is more than just storage; it's a gallery, a stage, and a reflection of identity. In ultra-luxury design, a garage transcends function. It becomes a curated space that showcases passion.",
         features: [
             "High-end materials and finishes",
@@ -21,8 +20,7 @@ const projectsData = [
         category: "KITCHEN DESIGN",
         year: "2023",
         location: "Surabaya, Indonesia",
-        area: "85 m²",
-        duration: "2.5 months",
+        designer: "Puncak Mas Gallery",
         description: "Through high-end materials, integrated lighting, and seamless architectural flow, Puncak Mas Gallery transforms kitchens into statements of elegance. No longer just a place to cook, these spaces blend functionality with artistry, offering a luxurious experience from the moment you step in.",
         features: [
             "Premium marble countertops",
@@ -37,8 +35,7 @@ const projectsData = [
         category: "BEDROOM DESIGN",
         year: "2022",
         location: "Malang, Indonesia",
-        area: "95 m²",
-        duration: "2 months",
+        designer: "Puncak Mas Gallery",
         description: "A bedroom should command attention, just like the prized possessions it shelters. By incorporating gallery-like elements—bespoke finishes, concealed lighting, and strategic spatial planning—we redefine its purpose, making it an essential extension of the home's identity.",
         features: [
             "Custom headboard design",
@@ -53,8 +50,7 @@ const projectsData = [
         category: "DINING DESIGN",
         year: "2022",
         location: "Malang, Indonesia",
-        area: "75 m²",
-        duration: "2 months",
+        designer: "Puncak Mas Gallery",
         description: "Creating spaces where families gather and memories are made. Our dining areas are designed with both aesthetics and functionality in mind, providing the perfect backdrop for special moments.",
         features: [
             "Statement chandelier",
@@ -69,8 +65,7 @@ const projectsData = [
         category: "OFFICE DESIGN",
         year: "2021",
         location: "Surabaya, Indonesia",
-        area: "65 m²",
-        duration: "1.5 months",
+        designer: "Puncak Mas Gallery",
         description: "Productivity meets luxury in our home office designs. We create inspiring workspaces that enhance focus while maintaining the elegance and comfort of a high-end residential interior.",
         features: [
             "Ergonomic furniture",
@@ -85,8 +80,7 @@ const projectsData = [
         category: "STORAGE DESIGN",
         year: "2021",
         location: "Malang, Indonesia",
-        area: "45 m²",
-        duration: "1.5 months",
+        designer: "Puncak Mas Gallery",
         description: "More than just storage, our walk-in closets are boutique-inspired spaces where organization meets luxury. Every detail is crafted to showcase your wardrobe in style.",
         features: [
             "Custom shelving system",
@@ -101,8 +95,7 @@ const projectsData = [
         category: "BATHROOM DESIGN",
         year: "2020",
         location: "Surabaya, Indonesia",
-        area: "55 m²",
-        duration: "2 months",
+        designer: "Puncak Mas Gallery",
         description: "Transform your daily routine into a spa-like experience. Our bathroom designs combine luxury materials with thoughtful functionality to create your personal sanctuary.",
         features: [
             "Rain shower system",
@@ -117,8 +110,7 @@ const projectsData = [
         category: "OUTDOOR DESIGN",
         year: "2020",
         location: "Malang, Indonesia",
-        area: "110 m²",
-        duration: "3 months",
+        designer: "Puncak Mas Gallery",
         description: "Extending luxury beyond the walls of your home. Our outdoor terrace designs create seamless transitions between indoor and outdoor living, perfect for entertainment and relaxation.",
         features: [
             "Weather-resistant furniture",

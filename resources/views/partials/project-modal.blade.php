@@ -12,11 +12,6 @@
         <h2 class="font-boska text-4xl mb-6" id="modalProjectTitle">Modern Living Room</h2>
         
         <div class="mb-8">
-            <h3 class="font-satoshi text-sm uppercase tracking-widest mb-2 text-gray-600">KITCHEN DESIGN</h3>
-            <p class="font-satoshi text-sm text-gray-700 mb-4" id="modalProjectCategory">PRESENTATION</p>
-        </div>
-        
-        <div class="mb-8">
             <h3 class="font-satoshi text-sm uppercase tracking-widest mb-3 text-gray-600">PROJECT DESCRIPTION</h3>
             <p class="font-satoshi text-sm leading-relaxed text-gray-700" id="modalProjectDescription">
                 A garage is often seen as an afterthought—a purely utilitarian space hidden from the rest of the home. But at Puncak Mas Gallery, we believe the garage is more than just storage; it's a gallery, a stage, and a reflection of identity.
@@ -45,12 +40,12 @@
                     <p class="font-medium" id="modalProjectLocation">Malang, Indonesia</p>
                 </div>
                 <div>
-                    <p class="text-gray-600">Area</p>
-                    <p class="font-medium" id="modalProjectArea">120 m²</p>
+                    <p class="text-gray-600">Designer</p>
+                    <p class="font-medium" id="modalProjectDesigner">Puncak Mas Gallery</p>
                 </div>
                 <div>
-                    <p class="text-gray-600">Duration</p>
-                    <p class="font-medium" id="modalProjectDuration">3 months</p>
+                    <p class="text-gray-600">Category</p>
+                    <p class="font-medium" id="modalProjectCategoryDetail">RESIDENTIAL DESIGN</p>
                 </div>
             </div>
         </div>
