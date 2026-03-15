@@ -103,6 +103,143 @@
             color: #666666;
         }
 
+        @keyframes luxuryCardReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(0.985);
+                filter: blur(8px);
+            }
+            65% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        .project-slide-card {
+            will-change: transform, opacity, filter;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+
+        @keyframes heroSheenSweep {
+            0% {
+                opacity: 0;
+                transform: translateX(-46%) skewX(-14deg);
+            }
+            18% {
+                opacity: 0.26;
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(158%) skewX(-14deg);
+            }
+        }
+
+        .hero-intro-item {
+            opacity: 1;
+            transform: none;
+            filter: none;
+        }
+
+        .hero-media {
+            transform: scale(1);
+            filter: saturate(1);
+        }
+
+        .hero-overlay {
+            opacity: 1;
+        }
+
+        .hero-sheen {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        body.hero-preload .hero-intro-item {
+            opacity: 0;
+            transform: translateY(26px);
+            filter: blur(6px);
+        }
+
+        body.hero-ready .hero-intro-item {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+            transition:
+                opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
+                filter 900ms cubic-bezier(0.16, 1, 0.3, 1);
+            transition-delay: var(--intro-delay, 0ms);
+        }
+
+        body.hero-preload .hero-media {
+            transform: scale(1.08);
+            filter: saturate(0.9);
+        }
+
+        body.hero-ready .hero-media {
+            transform: scale(1);
+            filter: saturate(1);
+            transition:
+                transform 1800ms cubic-bezier(0.16, 1, 0.3, 1),
+                filter 1800ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body.hero-preload .hero-overlay {
+            opacity: 0.38;
+        }
+
+        body.hero-ready .hero-overlay {
+            opacity: 1;
+            transition: opacity 1500ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body.hero-ready .hero-sheen {
+            animation: heroSheenSweep 1800ms cubic-bezier(0.22, 1, 0.36, 1) 420ms 1;
+        }
+
+        .luxury-scroll-reveal {
+            opacity: 0;
+            transform: translateY(34px) scale(0.985);
+            filter: blur(10px);
+            transition:
+                opacity 950ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 950ms cubic-bezier(0.16, 1, 0.3, 1),
+                filter 950ms cubic-bezier(0.16, 1, 0.3, 1);
+            transition-delay: var(--reveal-delay, 0ms);
+            will-change: opacity, transform, filter;
+        }
+
+        .luxury-scroll-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-intro-item,
+            .hero-media,
+            .hero-overlay,
+            .hero-sheen {
+                opacity: 1 !important;
+                transform: none !important;
+                filter: none !important;
+                transition: none !important;
+                animation: none !important;
+            }
+
+            .luxury-scroll-reveal {
+                opacity: 1;
+                transform: none;
+                filter: none;
+                transition: none;
+            }
+        }
+
         /* Modal styles */
         .modal {
             display: none;
@@ -348,17 +485,17 @@
         }
     </script>
 </head>
-<body class="font-satoshi">
+<body class="font-satoshi hero-preload">
     <!-- Header -->
     <header class="header-home fixed top-0 left-0 right-0 z-50 backdrop-blur-sm">
         <div class="px-6 py-6">
             <div class="flex justify-between items-center">
-                <div class="font-boska text-xl font-medium tracking-wide">
+                <div class="font-boska text-xl font-medium tracking-wide hero-intro-item" style="--intro-delay: 80ms;">
                     Puncak Mas
                     <span class="block text-xs font-satoshi font-light uppercase tracking-widest mx-6">GALLERY</span>
                 </div>
                 
-                <nav class="hidden md:flex space-x-8">
+                <nav class="hidden md:flex space-x-8 hero-intro-item" style="--intro-delay: 180ms;">
                     <a href="#hero" class="font-satoshi text-sm uppercase tracking-widest hover:text-accentOrange transition-colors">ABOUT</a>
                     <a href="#about" class="font-satoshi text-sm uppercase tracking-widest hover:text-accentOrange transition-colors">SERVICES</a>
                     <a href="#projects" class="font-satoshi text-sm uppercase tracking-widest hover:text-accentOrange transition-colors">PROJECTS</a>
@@ -375,13 +512,14 @@
             <img 
                 src="16.jpg"
                 alt="Modern luxury interior"
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover hero-media"
             />
-            <div class="absolute inset-0 bg-black/20"></div>
+            <div class="absolute inset-0 bg-black/20 hero-overlay"></div>
+            <div class="hero-sheen absolute inset-y-0 -left-1/4 w-1/3 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
         </div>
         
         <div class="relative h-full flex items-center">
-            <div class="absolute bottom-12 right-20">
+            <div class="absolute bottom-12 right-20 hero-intro-item" style="--intro-delay: 320ms;">
                 <button class="bg-darkCharcoal hover:bg-darkCharcoal/90 text-white mx-0 my-10 px-8 py-4 rounded-full font-satoshi text-sm uppercase tracking-widest transition-colors">
                     GET STARTED WITH US ↗
                 </button>
@@ -455,12 +593,6 @@
 
         <div class="px-6 relative">
             <div class="grid grid-cols-12 min-h-[600px] relative">
-                <!-- Vertical grid lines -->
-                <div class="absolute inset-0 pointer-events-none">
-                    <div class="absolute left-1/4 top-0 w-px h-full bg-gray-300"></div>
-                    <div class="absolute left-2/4 top-0 w-px h-full bg-gray-300"></div>
-                    <div class="absolute left-3/4 top-0 w-px h-full bg-gray-300"></div>
-                </div>
 
                 <!-- Left column - Text content -->
                 <div class="col-span-12 lg:col-span-3 relative flex flex-col justify-center py-16">
@@ -484,7 +616,7 @@
                 </div>
                 
                 <!-- Right column - Projects Container -->
-                <div class="col-span-12 lg:col-span-9 relative">
+                <div class="col-span-12 lg:col-span-9 relative lg:border-l border-gray-300">
                     <!-- Projects Slider Container -->
                     <div class="relative h-full overflow-hidden">
                         <div id="projectsSlider" class="flex transition-transform duration-500 ease-in-out h-full">
@@ -709,90 +841,7 @@
         </div>
     </section>
 
-    <!-- Project Modal -->
-    <div id="projectModal" class="modal">
-        <span class="close-modal" onclick="closeProjectModal()">&times;</span>
-        
-        <!-- Project Details Panel -->
-        <div id="projectDetails" class="project-details">
-            <!-- Close Details Button (inside panel) -->
-            <button class="details-toggle" onclick="toggleDetails()">
-                <span id="detailsArrow">×</span>
-            </button>
-            
-            <h2 class="font-boska text-4xl mb-6" id="modalProjectTitle">Modern Living Room</h2>
-            
-            <div class="mb-8">
-                <h3 class="font-satoshi text-sm uppercase tracking-widest mb-2 text-gray-600">KITCHEN DESIGN</h3>
-                <p class="font-satoshi text-sm text-gray-700 mb-4" id="modalProjectCategory">PRESENTATION</p>
-            </div>
-            
-            <div class="mb-8">
-                <h3 class="font-satoshi text-sm uppercase tracking-widest mb-3 text-gray-600">PROJECT DESCRIPTION</h3>
-                <p class="font-satoshi text-sm leading-relaxed text-gray-700" id="modalProjectDescription">
-                    A garage is often seen as an afterthought—a purely utilitarian space hidden from the rest of the home. But at Puncak Mas Gallery, we believe the garage is more than just storage; it's a gallery, a stage, and a reflection of identity.
-                </p>
-            </div>
-            
-            <div class="mb-8">
-                <h3 class="font-satoshi text-sm uppercase tracking-widest mb-3 text-gray-600">KEY FEATURES</h3>
-                <ul class="font-satoshi text-sm leading-relaxed text-gray-700 space-y-2" id="modalProjectFeatures">
-                    <li>• High-end materials and finishes</li>
-                    <li>• Integrated lighting system</li>
-                    <li>• Custom cabinetry solutions</li>
-                    <li>• Smart home integration</li>
-                </ul>
-            </div>
-            
-            <div class="mb-8">
-                <h3 class="font-satoshi text-sm uppercase tracking-widest mb-3 text-gray-600">PROJECT DETAILS</h3>
-                <div class="grid grid-cols-2 gap-4 font-satoshi text-sm">
-                    <div>
-                        <p class="text-gray-600">Year</p>
-                        <p class="font-medium" id="modalProjectYear">2023</p>
-                    </div>
-                    <div>
-                        <p class="text-gray-600">Location</p>
-                        <p class="font-medium" id="modalProjectLocation">Malang, Indonesia</p>
-                    </div>
-                    <div>
-                        <p class="text-gray-600">Area</p>
-                        <p class="font-medium" id="modalProjectArea">120 m²</p>
-                    </div>
-                    <div>
-                        <p class="text-gray-600">Duration</p>
-                        <p class="font-medium" id="modalProjectDuration">3 months</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="modal-content">
-            <!-- Reopen Details Button (shows when panel is hidden) -->
-            <button class="reopen-details-btn" onclick="toggleDetails()">
-                Show Details
-            </button>
-            
-            <!-- Image Gallery Navigation -->
-            <button class="gallery-nav-btn prev" onclick="changeGalleryImage(-1)">
-                <span>‹</span>
-            </button>
-            
-            <button class="gallery-nav-btn next" onclick="changeGalleryImage(1)">
-                <span>›</span>
-            </button>
-            
-            <!-- Gallery Images Container -->
-            <div class="w-full h-full flex items-center justify-center bg-black">
-                <img id="modalImage" class="gallery-image" src="" alt="Project Image">
-            </div>
-            
-            <!-- Image Counter -->
-            <div class="image-counter">
-                <span id="currentImageIndex">1</span> / <span id="totalImages">4</span>
-            </div>
-        </div>
-    </div>
+    @include('partials.project-modal')
 
     <!-- Timeline Section -->
     <section id="timeline" class="py-24 bg-white">
@@ -824,12 +873,12 @@
                                 <div class="flex items-start space-x-8">
                                     <span class="font-boska text-2xl font-light text-gray-400 group-hover:text-darkCharcoal transition-colors duration-300">01</span>
                                     <div>
-                                        <h3 class="font-satoshi text-lg font-medium mb-2 group-hover:text-darkCharcoal transition-colors duration-300">SITE VISIT</h3>
+                                        <h3 class="font-satoshi text-lg font-medium mb-2 group-hover:text-darkCharcoal transition-colors duration-300">Site Visit &amp; Get-to-Know Session</h3>
                                     </div>
                                 </div>
                                 <div class="max-w-md">
-                                    <p class="font-satoshi text-xs uppercase tracking-widest text-gray-600 leading-relaxed">
-                                        START BY VISITING YOUR PLACE TO UNDERSTAND WHAT YOU NEED. IT'S ALL ABOUT GETTING ON THE SAME PAGE.
+                                    <p class="font-satoshi text-sm text-gray-600 leading-relaxed">
+                                        Get to know what the client wants. We'll start by visiting your place to understand what you need, what styles you like, and what problems you're currently facing. It's all about getting on the same page.
                                     </p>
                                 </div>
                             </div>
@@ -840,12 +889,12 @@
                                 <div class="flex items-start space-x-8">
                                     <span class="font-boska text-2xl font-light text-gray-400 group-hover:text-darkCharcoal transition-colors duration-300">02</span>
                                     <div>
-                                        <h3 class="font-satoshi text-lg font-medium mb-2 group-hover:text-darkCharcoal transition-colors duration-300">QUOTATION</h3>
+                                        <h3 class="font-satoshi text-lg font-medium mb-2 group-hover:text-darkCharcoal transition-colors duration-300">Quotation</h3>
                                     </div>
                                 </div>
                                 <div class="max-w-md">
-                                    <p class="font-satoshi text-xs uppercase tracking-widest text-gray-600 leading-relaxed">
-                                        START BY VISITING YOUR PLACE TO UNDERSTAND WHAT YOU NEED. IT'S ALL ABOUT GETTING ON THE SAME PAGE.
+                                    <p class="font-satoshi text-sm text-gray-600 leading-relaxed">
+                                        Based on your needs and the scope of the project, we'll send you a quotation that includes design and estimated execution costs.
                                     </p>
                                 </div>
                             </div>
@@ -856,12 +905,12 @@
                                 <div class="flex items-start space-x-8">
                                     <span class="font-boska text-2xl font-light text-gray-400 group-hover:text-darkCharcoal transition-colors duration-300">03</span>
                                     <div>
-                                        <h3 class="font-satoshi text-lg font-medium mb-2 group-hover:text-darkCharcoal transition-colors duration-300">DOWN PAYMENT</h3>
+                                        <h3 class="font-satoshi text-lg font-medium mb-2 group-hover:text-darkCharcoal transition-colors duration-300">Down Payment (DP)</h3>
                                     </div>
                                 </div>
                                 <div class="max-w-md">
-                                    <p class="font-satoshi text-xs uppercase tracking-widest text-gray-600 leading-relaxed">
-                                        START BY VISITING YOUR PLACE TO UNDERSTAND WHAT YOU NEED. IT'S ALL ABOUT GETTING ON THE SAME PAGE.
+                                    <p class="font-satoshi text-sm text-gray-600 leading-relaxed">
+                                        If you're happy with the quotation, we'll move forward with a down payment to lock in the project and start the design process.
                                     </p>
                                 </div>
                             </div>
@@ -872,12 +921,12 @@
                                 <div class="flex items-start space-x-8">
                                     <span class="font-boska text-2xl font-light text-gray-400 group-hover:text-darkCharcoal transition-colors duration-300">04</span>
                                     <div>
-                                        <h3 class="font-satoshi text-lg font-medium mb-2 group-hover:text-darkCharcoal transition-colors duration-300">DESIGN PROCESS</h3>
+                                        <h3 class="font-satoshi text-lg font-medium mb-2 group-hover:text-darkCharcoal transition-colors duration-300">Design Process</h3>
                                     </div>
                                 </div>
                                 <div class="max-w-md">
-                                    <p class="font-satoshi text-xs uppercase tracking-widest text-gray-600 leading-relaxed">
-                                        START BY VISITING YOUR PLACE TO UNDERSTAND WHAT YOU NEED. IT'S ALL ABOUT GETTING ON THE SAME PAGE.
+                                    <p class="font-satoshi text-sm text-gray-600 leading-relaxed">
+                                        We'll work on your design and you'll get unlimited revisions-as long as the core design concept stays the same.
                                     </p>
                                 </div>
                             </div>
@@ -892,8 +941,8 @@
                                     </div>
                                 </div>
                                 <div class="max-w-md">
-                                    <p class="font-satoshi text-xs uppercase tracking-widest text-gray-600 leading-relaxed">
-                                        START BY VISITING YOUR PLACE TO UNDERSTAND WHAT YOU NEED. IT'S ALL ABOUT GETTING ON THE SAME PAGE.
+                                    <p class="font-satoshi text-sm text-gray-600 leading-relaxed">
+                                        Once the design is approved, we'll do another round of detailed measurements to make sure everything fits perfectly.
                                     </p>
                                 </div>
                             </div>
@@ -904,12 +953,12 @@
                                 <div class="flex items-start space-x-8">
                                     <span class="font-boska text-2xl font-light text-gray-400 group-hover:text-darkCharcoal transition-colors duration-300">06</span>
                                     <div>
-                                        <h3 class="font-satoshi text-lg font-medium mb-2 group-hover:text-darkCharcoal transition-colors duration-300">EXECUTION</h3>
+                                        <h3 class="font-satoshi text-lg font-medium mb-2 group-hover:text-darkCharcoal transition-colors duration-300">Execution</h3>
                                     </div>
                                 </div>
                                 <div class="max-w-md">
-                                    <p class="font-satoshi text-xs uppercase tracking-widest text-gray-600 leading-relaxed">
-                                        START BY VISITING YOUR PLACE TO UNDERSTAND WHAT YOU NEED. IT'S ALL ABOUT GETTING ON THE SAME PAGE.
+                                    <p class="font-satoshi text-sm text-gray-600 leading-relaxed">
+                                        After everything is set, we move on to production and installation. This usually takes about 2 months, depending on the complexity of the project.
                                     </p>
                                 </div>
                             </div>
@@ -1012,145 +1061,48 @@
     </section>
 
     <script>
-        // Project data with multiple images
-        const projectsData = [
-            {
-                title: "Modern Living Room",
-                category: "RESIDENTIAL DESIGN",
-                year: "2023",
-                location: "Malang, Indonesia",
-                area: "120 m²",
-                duration: "3 months",
-                description: "A garage is often seen as an afterthought—a purely utilitarian space hidden from the rest of the home. But at Puncak Mas Gallery, we believe the garage is more than just storage; it's a gallery, a stage, and a reflection of identity. In ultra-luxury design, a garage transcends function. It becomes a curated space that showcases passion.",
-                features: [
-                    "High-end materials and finishes",
-                    "Integrated lighting system",
-                    "Custom cabinetry solutions",
-                    "Smart home integration"
-                ],
-                images: ["1.jpg", "3.jpg", "0.jpg", "16.jpg"]
-            },
-            {
-                title: "Luxury Kitchen",
-                category: "KITCHEN DESIGN",
-                year: "2023",
-                location: "Surabaya, Indonesia",
-                area: "85 m²",
-                duration: "2.5 months",
-                description: "Through high-end materials, integrated lighting, and seamless architectural flow, Puncak Mas Gallery transforms kitchens into statements of elegance. No longer just a place to cook, these spaces blend functionality with artistry, offering a luxurious experience from the moment you step in.",
-                features: [
-                    "Premium marble countertops",
-                    "Custom built-in appliances",
-                    "Designer pendant lighting",
-                    "Wine storage solutions"
-                ],
-                images: ["3.jpg", "1.jpg", "16.jpg", "0.jpg"]
-            },
-            {
-                title: "Bedroom Suite",
-                category: "BEDROOM DESIGN",
-                year: "2022",
-                location: "Malang, Indonesia",
-                area: "95 m²",
-                duration: "2 months",
-                description: "A bedroom should command attention, just like the prized possessions it shelters. By incorporating gallery-like elements—bespoke finishes, concealed lighting, and strategic spatial planning—we redefine its purpose, making it an essential extension of the home's identity.",
-                features: [
-                    "Custom headboard design",
-                    "Walk-in wardrobe",
-                    "Ambient lighting control",
-                    "Premium textile selections"
-                ],
-                images: ["0.jpg", "16.jpg", "3.jpg", "1.jpg"]
-            },
-            {
-                title: "Dining Area",
-                category: "DINING DESIGN",
-                year: "2022",
-                location: "Malang, Indonesia",
-                area: "75 m²",
-                duration: "2 months",
-                description: "Creating spaces where families gather and memories are made. Our dining areas are designed with both aesthetics and functionality in mind, providing the perfect backdrop for special moments.",
-                features: [
-                    "Statement chandelier",
-                    "Custom dining furniture",
-                    "Feature wall design",
-                    "Integrated storage"
-                ],
-                images: ["1.jpg", "0.jpg", "3.jpg", "16.jpg"]
-            },
-            {
-                title: "Home Office",
-                category: "OFFICE DESIGN",
-                year: "2021",
-                location: "Surabaya, Indonesia",
-                area: "65 m²",
-                duration: "1.5 months",
-                description: "Productivity meets luxury in our home office designs. We create inspiring workspaces that enhance focus while maintaining the elegance and comfort of a high-end residential interior.",
-                features: [
-                    "Ergonomic furniture",
-                    "Task lighting system",
-                    "Built-in bookshelves",
-                    "Acoustic treatments"
-                ],
-                images: ["3.jpg", "16.jpg", "1.jpg", "0.jpg"]
-            },
-            {
-                title: "Walk-in Closet",
-                category: "STORAGE DESIGN",
-                year: "2021",
-                location: "Malang, Indonesia",
-                area: "45 m²",
-                duration: "1.5 months",
-                description: "More than just storage, our walk-in closets are boutique-inspired spaces where organization meets luxury. Every detail is crafted to showcase your wardrobe in style.",
-                features: [
-                    "Custom shelving system",
-                    "LED strip lighting",
-                    "Center island",
-                    "Full-length mirrors"
-                ],
-                images: ["0.jpg", "3.jpg", "16.jpg", "1.jpg"]
-            },
-            {
-                title: "Bathroom Design",
-                category: "BATHROOM DESIGN",
-                year: "2020",
-                location: "Surabaya, Indonesia",
-                area: "55 m²",
-                duration: "2 months",
-                description: "Transform your daily routine into a spa-like experience. Our bathroom designs combine luxury materials with thoughtful functionality to create your personal sanctuary.",
-                features: [
-                    "Rain shower system",
-                    "Freestanding bathtub",
-                    "Heated flooring",
-                    "Premium fixtures"
-                ],
-                images: ["0.jpg", "1.jpg", "3.jpg", "16.jpg"]
-            },
-            {
-                title: "Outdoor Terrace",
-                category: "OUTDOOR DESIGN",
-                year: "2020",
-                location: "Malang, Indonesia",
-                area: "110 m²",
-                duration: "3 months",
-                description: "Extending luxury beyond the walls of your home. Our outdoor terrace designs create seamless transitions between indoor and outdoor living, perfect for entertainment and relaxation.",
-                features: [
-                    "Weather-resistant furniture",
-                    "Outdoor kitchen",
-                    "Ambient lighting",
-                    "Landscaping integration"
-                ],
-                images: ["3.jpg", "0.jpg", "16.jpg", "1.jpg"]
-            }
-        ];
+        @include('partials.project-modal-data')
 
         let currentProject = 0;
         let currentImageIndex = 0;
         let detailsOpen = false;
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         // Portfolio slider functionality
         let currentSlide = 0;
         const totalSlides = 3;
+
+        function animateActiveProjectSlide() {
+            const slider = document.getElementById('projectsSlider');
+            const slides = slider?.querySelectorAll(':scope > .min-w-full');
+            const activeSlide = slides?.[currentSlide];
+
+            if (!activeSlide) return;
+
+            const cards = activeSlide.querySelectorAll(':scope > div');
+
+            cards.forEach((card, index) => {
+                if (!card.querySelector('.group')) return;
+
+                card.classList.add('project-slide-card');
+
+                if (prefersReducedMotion) {
+                    card.style.animation = 'none';
+                    card.style.opacity = '1';
+                    card.style.transform = 'none';
+                    card.style.filter = 'none';
+                    return;
+                }
+
+                card.style.animation = 'none';
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px) scale(0.985)';
+                card.style.filter = 'blur(8px)';
+
+                void card.offsetWidth;
+                card.style.animation = `luxuryCardReveal 900ms cubic-bezier(0.16, 1, 0.3, 1) ${index * 110}ms forwards`;
+            });
+        }
 
         function updateSlider() {
             const slider = document.getElementById('projectsSlider');
@@ -1175,6 +1127,8 @@
                     dot.classList.add('bg-gray-300');
                 }
             });
+
+            animateActiveProjectSlide();
         }
 
         function nextSlide() {
@@ -1265,6 +1219,63 @@
             }
         }
 
+        function initLuxuryScrollAnimations() {
+            const revealGroups = [
+                { elements: document.querySelectorAll('#about .grid.grid-cols-12 > div'), baseDelay: 0, step: 130 },
+                { elements: document.querySelectorAll('#projects .grid.grid-cols-12 > div'), baseDelay: 80, step: 130 },
+                { elements: document.querySelectorAll('#projects > .flex.justify-center.items-center.py-8'), baseDelay: 220, step: 0 },
+                { elements: document.querySelectorAll('#timeline .grid.grid-cols-12 > div'), baseDelay: 0, step: 130 },
+                { elements: document.querySelectorAll('#timeline .group'), baseDelay: 140, step: 80 },
+                { elements: document.querySelectorAll('#contact .grid.grid-cols-11 > div'), baseDelay: 80, step: 130 },
+            ];
+
+            const revealItems = [];
+
+            revealGroups.forEach((group) => {
+                group.elements.forEach((element, index) => {
+                    element.classList.add('luxury-scroll-reveal');
+                    element.style.setProperty('--reveal-delay', `${group.baseDelay + (index * group.step)}ms`);
+                    revealItems.push(element);
+                });
+            });
+
+            if (!revealItems.length) return;
+
+            if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+                revealItems.forEach((item) => item.classList.add('is-visible'));
+                return;
+            }
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                });
+            }, {
+                threshold: 0.18,
+                rootMargin: '0px 0px -8% 0px',
+            });
+
+            revealItems.forEach((item) => revealObserver.observe(item));
+        }
+
+        function initHeroIntroAnimation() {
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduceMotion) {
+                document.body.classList.remove('hero-preload');
+                document.body.classList.add('hero-ready');
+                return;
+            }
+
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    document.body.classList.add('hero-ready');
+                    document.body.classList.remove('hero-preload');
+                });
+            });
+        }
+
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             const modal = document.getElementById('projectModal');
@@ -1346,6 +1357,8 @@
 
         // Initialize slider
         updateSlider();
+        initHeroIntroAnimation();
+        initLuxuryScrollAnimations();
     </script>
 </body>
 </html>
