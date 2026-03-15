@@ -984,33 +984,77 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 20px 15px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.4rem;
+            height: 3.4rem;
+            border-radius: 999px;
+            background: rgba(16, 16, 16, 0.42);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(247, 242, 235, 0.96);
             cursor: pointer;
-            font-size: 24px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            z-index: 5;
+            transition:
+                transform 0.3s ease,
+                background-color 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease,
+                color 0.3s ease;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+            z-index: 8;
         }
 
         .gallery-nav-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(28, 28, 28, 0.58);
+            border-color: rgba(216, 178, 138, 0.34);
+            box-shadow: 0 24px 52px rgba(0, 0, 0, 0.28);
+            color: #ffffff;
         }
 
         .gallery-nav-btn.prev {
-            left: 520px;
-            transition: left 0.3s ease;
+            left: 536px;
+            transition: left 0.3s ease, transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
         }
 
         .gallery-nav-btn.next {
-            right: 20px;
+            right: 24px;
         }
 
         .project-details.hidden ~ .modal-content .gallery-nav-btn.prev {
-            left: 20px;
+            left: 24px;
+        }
+
+        .gallery-nav-btn:focus-visible {
+            outline: 2px solid rgba(216, 178, 138, 0.85);
+            outline-offset: 4px;
+        }
+
+        .gallery-nav-icon {
+            font-size: 2rem;
+            line-height: 1;
+            color: inherit;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 767px) {
+            .gallery-nav-btn {
+                width: 3rem;
+                height: 3rem;
+            }
+
+            .gallery-nav-btn.prev {
+                left: 12px;
+            }
+
+            .gallery-nav-btn.next {
+                right: 12px;
+            }
+
+            .project-details.hidden ~ .modal-content .gallery-nav-btn.prev {
+                left: 12px;
+            }
         }
 
         .close-modal {

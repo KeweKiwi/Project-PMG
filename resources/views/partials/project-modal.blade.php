@@ -58,12 +58,12 @@
         </button>
         
         <!-- Image Gallery Navigation -->
-        <button class="gallery-nav-btn prev" onclick="changeGalleryImage(-1)">
-            <span>‹</span>
+        <button class="gallery-nav-btn prev" onclick="changeGalleryImage(-1)" aria-label="Previous image">
+            <span class="gallery-nav-icon" aria-hidden="true">‹</span>
         </button>
         
-        <button class="gallery-nav-btn next" onclick="changeGalleryImage(1)">
-            <span>›</span>
+        <button class="gallery-nav-btn next" onclick="changeGalleryImage(1)" aria-label="Next image">
+            <span class="gallery-nav-icon" aria-hidden="true">›</span>
         </button>
         
         <!-- Gallery Images Container -->
