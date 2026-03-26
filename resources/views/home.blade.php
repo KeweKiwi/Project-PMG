@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puncak Mas Gallery - Luxury Interior Design</title>
-    <link href="https://api.fontshare.com/v2/css?f[]=boska@400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=boska@400,500,600,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
@@ -18,8 +18,7 @@
         */
 
         /* Satoshi font for body text */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        @import url('https://api.fontshare.com/v2/css?f[]=boska@200,300,400,500,700&display=swap');
+        @import url('https://api.fontshare.com/v2/css?f[]=boska@200,300,400,500,700&f[]=satoshi@300,400,500,700&display=swap');
         
         /* Custom Tailwind configuration */
         @layer utilities {
@@ -27,7 +26,7 @@
                 font-family: 'Boska', serif;
             }
             .font-satoshi {
-                font-family: 'Inter', sans-serif;
+                font-family: 'Satoshi', sans-serif;
             }
         }
 
@@ -217,6 +216,56 @@
             letter-spacing: -0.02em;
         }
 
+        .offer-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+            margin-bottom: 2rem;
+        }
+
+        .offer-item {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.2rem;
+            align-items: start;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(44, 44, 44, 0.12);
+            transition: border-color 220ms ease, transform 220ms ease;
+        }
+
+        .offer-item:hover {
+            border-color: rgba(216, 178, 138, 0.55);
+            transform: translateX(3px);
+        }
+
+        .offer-number {
+            min-width: 2.4rem;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            font-family: 'Satoshi', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            line-height: 1;
+            letter-spacing: 0.18em;
+            color: rgba(216, 178, 138, 0.95);
+            flex-shrink: 0;
+            padding-top: 0.38rem;
+        }
+
+        .offer-text {
+            font-family: 'Satoshi', sans-serif;
+            font-size: 16px;
+            line-height: 1.72;
+            color: #2c2c2c;
+            max-width: 32rem;
+        }
+
+        .offer-philosophy {
+            padding-top: 1rem;
+            border-top: 1px solid rgba(216, 178, 138, 0.55);
+        }
+        
         .h2-porto {
             font-family: 'Boska' !important;
             font-size: 55px;
@@ -1273,24 +1322,52 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
                         <!-- Top left -->
                         <div>
-                            <h3 class="h3-about font-satoshi uppercase tracking-widest mb-4 text-darkCharcoal"><b>ESTABLISHED IN 1994,</b></h3>
+                            <h3 class="h3-about font-satoshi uppercase tracking-widest mb-4 text-darkCharcoal"><b>Interior & Sanitary Gallery,</b></h3>
                             <p class="p-about mb-8"> 
-                                from a family-run materials store, Puncak Mas Gallery has evolved into a design & build studio that blends quality craftsmanship with deep material expertise.
+                                We are a curated interior and sanitary gallery, offering a refined selection of accessories and design solutions to elevate every space.
+                            </p>
+                            <p class="p-about mb-8">
+                                With a strong commitment to quality and aesthetics, we collaborate with well-known architects and interior designers to bring visionary concepts to life. Our network also includes highly skilled furniture makers, combining craftsmanship with advanced manufacturing technology.
+                            </p>
+                            <p class="p-about mb-8">
+                                Our furniture partners are equipped with full-scale machinery, including CNC and edge banding machines. Their CNC technology supports laser cutting and highly precise drilling positions, ensuring exceptional accuracy in every detail. This results in clean edges, seamless finishes, and a level of precision typically achieved only by large-scale factories.
                             </p>
                             <p class="p-about">
-                                We're redefining dream living not just as a space that looks beautiful, but one that functions right and long, and feels right every day.
+                                From contemporary to timeless designs, we ensure every product and partnership reflects our dedication to excellence, functionality, and style.
                             </p>
                         </div>
                         
                         <!-- Top right -->
                         <div>
-                            <h3 class="h3-about font-satoshi uppercase tracking-widest mb-4 text-darkCharcoal"><b>CREATING CO-EXISTENCE,</b></h3>
-                            <p class="p-about mb-8">
-                                Starting from Malang and expanding throughout the East Java region, every home we craft is handbuilt with care, precision, and purpose: a reflection of our belief that true quality starts from the core.                         
-                            </p>
-                            <p class="p-about">
-                                From the very first layer of structure to the final finish, every decision is made intentionally, using only what's best even when it's behind the walls.
-                            </p>
+                            <h3 class="h3-about font-satoshi uppercase tracking-widest mb-4 text-darkCharcoal"><b>What We Offer</b></h3>
+                            <div class="offer-list">
+                                <div class="offer-item">
+                                    <span class="offer-number">1</span>
+                                    <p class="offer-text">Curated interior & sanitary accessories</p>
+                                </div>
+                                <div class="offer-item">
+                                    <span class="offer-number">2</span>
+                                    <p class="offer-text">Collaboration with leading architects & designers</p>
+                                </div>
+                                <div class="offer-item">
+                                    <span class="offer-number">3</span>
+                                    <p class="offer-text">Custom and selected furniture pieces</p>
+                                </div>
+                                <div class="offer-item">
+                                    <span class="offer-number">4</span>
+                                    <p class="offer-text">Advanced precision manufacturing (CNC, laser cutting & edge banding)</p>
+                                </div>
+                                <div class="offer-item">
+                                    <span class="offer-number">5</span>
+                                    <p class="offer-text">High-quality materials and craftsmanship</p>
+                                </div>
+                            </div>
+                            <h3 class="h3-about font-satoshi uppercase tracking-widest mb-4 text-darkCharcoal"><b>Our Philosophy</b></h3>
+                            <div class="offer-philosophy">
+                                <p class="p-about">
+                                    We believe that great design is a balance of beauty, function, and craftsmanship—where every detail matters.
+                                </p>
+                            </div>
                         </div>
                         
                         <!-- Bottom section with button -->
@@ -1682,7 +1759,7 @@
                                 </div>
                                 <div class="max-w-md">
                                     <p class="timeline-body font-satoshi text-sm text-gray-600 leading-relaxed">
-                                        After everything is set, we move on to production and installation. This usually takes about 2 months, depending on the complexity of the project.
+                                        After everything is set, we move on to production and installation. This usually takes about 2 months, depending on the complexity of the project. Production can be completed within 30 working days for projects under 50 m². Installation for areas below 10 m² can be done in approximately 3 days (terms & conditions apply).
                                     </p>
                                 </div>
                             </div>
