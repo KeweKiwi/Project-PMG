@@ -67,8 +67,11 @@
         </button>
         
         <!-- Gallery Images Container -->
-        <div class="w-full h-full flex items-center justify-center bg-black">
-            <img id="modalImage" class="gallery-image" src="" alt="Project Image">
+        <div class="gallery-stage">
+            <div class="gallery-viewport">
+                <img id="modalImagePrimary" class="gallery-image active" src="" alt="Project Image">
+                <img id="modalImageSecondary" class="gallery-image" src="" alt="Project Image">
+            </div>
         </div>
         
         <!-- Image Counter -->

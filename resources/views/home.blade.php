@@ -1022,11 +1022,45 @@
             padding-left: 0;
         }
 
+        .gallery-stage {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem;
+            background:
+                radial-gradient(circle at center, rgba(255, 255, 255, 0.05), transparent 58%),
+                linear-gradient(180deg, rgba(8, 8, 8, 0.96), rgba(0, 0, 0, 1));
+        }
+
+        .gallery-viewport {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
         .gallery-image {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: contain;
-            transition: opacity 0.3s ease;
+            opacity: 0;
+            transform: scale(1.018);
+            filter: saturate(0.98);
+            transition:
+                opacity 460ms cubic-bezier(0.22, 1, 0.36, 1),
+                transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+                filter 460ms ease;
+            will-change: opacity, transform;
+        }
+
+        .gallery-image.active {
+            opacity: 1;
+            transform: scale(1);
+            filter: saturate(1);
         }
 
         .gallery-nav-btn {
@@ -1088,6 +1122,10 @@
         }
 
         @media (max-width: 767px) {
+            .gallery-stage {
+                padding: 1rem;
+            }
+
             .gallery-nav-btn {
                 width: 3rem;
                 height: 3rem;
@@ -1281,7 +1319,7 @@
     <section id="hero" class="relative h-screen bg-cream overflow-hidden">
         <div class="absolute inset-0">
             <img 
-                src="16.jpg"
+                src="1d.jpg"
                 alt="Modern luxury interior"
                 class="w-full h-full object-cover hero-media"
             />
@@ -1428,14 +1466,14 @@
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(0)">
                                         <div class="relative overflow-hidden mb-4 flex-1">
                                             <img 
-                                                src="1.jpg"
-                                                alt="Modern Living Room"
+                                                src="1e.png"
+                                                alt="Commercial Lobby"
                                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                             />
                                         </div>
                                         <div class="flex justify-between items-center mt-auto">
                                             <div>
-                                                <h3 class="font-satoshi text-sm font-medium">Modern Living Room</h3>
+                                                <h3 class="font-satoshi text-sm font-medium">Commercial Lobby</h3>
                                                 <p class="font-satoshi text-sm text-gray-600">2023</p>
                                             </div>
                                             <div class="w-6 h-6 border border-darkCharcoal rounded-full flex items-center justify-center group-hover:bg-darkCharcoal group-hover:text-white transition-all duration-300">
@@ -1450,15 +1488,15 @@
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(1)">
                                         <div class="relative overflow-hidden mb-4 flex-1">
                                             <img 
-                                                src="3.jpg"
-                                                alt="Luxury Kitchen"
+                                                src="2a.jpg"
+                                                alt="AS House"
                                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                             />
                                         </div>
                                         <div class="flex justify-between items-center mt-auto">
                                             <div>
-                                                <h3 class="font-satoshi text-sm font-medium">Luxury Kitchen</h3>
-                                                <p class="font-satoshi text-sm text-gray-600">2023</p>
+                                                <h3 class="font-satoshi text-sm font-medium">AS House</h3>
+                                                <p class="font-satoshi text-sm text-gray-600">2026</p>
                                             </div>
                                             <div class="w-6 h-6 border border-darkCharcoal rounded-full flex items-center justify-center group-hover:bg-darkCharcoal group-hover:text-white transition-all duration-300">
                                                 <span class="text-xs">→</span>
@@ -1472,15 +1510,15 @@
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(2)">
                                         <div class="relative overflow-hidden mb-4 flex-1">
                                             <img 
-                                                src="0.jpg"
-                                                alt="Bedroom Suite"
+                                                src="3c.jpg"
+                                                alt="BL HOUSE"
                                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                             />
                                         </div>
                                         <div class="flex justify-between items-center mt-auto">
                                             <div>
-                                                <h3 class="font-satoshi text-sm font-medium">Bedroom Suite</h3>
-                                                <p class="font-satoshi text-sm text-gray-600">2022</p>
+                                                <h3 class="font-satoshi text-sm font-medium">BL HOUSE</h3>
+                                                <p class="font-satoshi text-sm text-gray-600">2024</p>
                                             </div>
                                             <div class="w-6 h-6 border border-darkCharcoal rounded-full flex items-center justify-center group-hover:bg-darkCharcoal group-hover:text-white transition-all duration-300">
                                                 <span class="text-xs">→</span>
@@ -1497,15 +1535,15 @@
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(3)">
                                         <div class="relative overflow-hidden mb-4 flex-1">
                                             <img 
-                                                src="1.jpg"
-                                                alt="Dining Area"
+                                                src="4a.jpg"
+                                                alt="GO House"
                                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                             />
                                         </div>
                                         <div class="flex justify-between items-center mt-auto">
                                             <div>
-                                                <h3 class="font-satoshi text-sm font-medium">Dining Area</h3>
-                                                <p class="font-satoshi text-sm text-gray-600">2022</p>
+                                                <h3 class="font-satoshi text-sm font-medium">GO House</h3>
+                                                <p class="font-satoshi text-sm text-gray-600">2024</p>
                                             </div>
                                             <div class="w-6 h-6 border border-darkCharcoal rounded-full flex items-center justify-center group-hover:bg-darkCharcoal group-hover:text-white transition-all duration-300">
                                                 <span class="text-xs">→</span>
@@ -1519,15 +1557,15 @@
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(4)">
                                         <div class="relative overflow-hidden mb-4 flex-1">
                                             <img 
-                                                src="3.jpg"
-                                                alt="Home Office"
+                                                src="5a.jpg"
+                                                alt="EC HOUSE"
                                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                             />
                                         </div>
                                         <div class="flex justify-between items-center mt-auto">
                                             <div>
-                                                <h3 class="font-satoshi text-sm font-medium">Home Office</h3>
-                                                <p class="font-satoshi text-sm text-gray-600">2021</p>
+                                                <h3 class="font-satoshi text-sm font-medium">EC HOUSE</h3>
+                                                <p class="font-satoshi text-sm text-gray-600">2024</p>
                                             </div>
                                             <div class="w-6 h-6 border border-darkCharcoal rounded-full flex items-center justify-center group-hover:bg-darkCharcoal group-hover:text-white transition-all duration-300">
                                                 <span class="text-xs">→</span>
@@ -1541,15 +1579,15 @@
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(5)">
                                         <div class="relative overflow-hidden mb-4 flex-1">
                                             <img 
-                                                src="0.jpg"
-                                                alt="Walk-in Closet"
+                                                src="6a.jpg"
+                                                alt="YG House"
                                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                             />
                                         </div>
                                         <div class="flex justify-between items-center mt-auto">
                                             <div>
-                                                <h3 class="font-satoshi text-sm font-medium">Walk-in Closet</h3>
-                                                <p class="font-satoshi text-sm text-gray-600">2021</p>
+                                                <h3 class="font-satoshi text-sm font-medium">YG House</h3>
+                                                <p class="font-satoshi text-sm text-gray-600">2025</p>
                                             </div>
                                             <div class="w-6 h-6 border border-darkCharcoal rounded-full flex items-center justify-center group-hover:bg-darkCharcoal group-hover:text-white transition-all duration-300">
                                                 <span class="text-xs">→</span>
@@ -1566,15 +1604,15 @@
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(6)">
                                         <div class="relative overflow-hidden mb-4 flex-1">
                                             <img 
-                                                src="0.jpg"
-                                                alt="Bathroom Design"
+                                                src="7a.jpg"
+                                                alt="SS House"
                                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                             />
                                         </div>
                                         <div class="flex justify-between items-center mt-auto">
                                             <div>
-                                                <h3 class="font-satoshi text-sm font-medium">Bathroom Design</h3>
-                                                <p class="font-satoshi text-sm text-gray-600">2020</p>
+                                                <h3 class="font-satoshi text-sm font-medium">SS House</h3>
+                                                <p class="font-satoshi text-sm text-gray-600">2026</p>
                                             </div>
                                             <div class="w-6 h-6 border border-darkCharcoal rounded-full flex items-center justify-center group-hover:bg-darkCharcoal group-hover:text-white transition-all duration-300">
                                                 <span class="text-xs">→</span>
@@ -1588,15 +1626,15 @@
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(7)">
                                         <div class="relative overflow-hidden mb-4 flex-1">
                                             <img 
-                                                src="3.jpg"
-                                                alt="Outdoor Terrace"
+                                                src="8a.jpg"
+                                                alt="TK House"
                                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                             />
                                         </div>
                                         <div class="flex justify-between items-center mt-auto">
                                             <div>
-                                                <h3 class="font-satoshi text-sm font-medium">Outdoor Terrace</h3>
-                                                <p class="font-satoshi text-sm text-gray-600">2020</p>
+                                                <h3 class="font-satoshi text-sm font-medium">TK House</h3>
+                                                <p class="font-satoshi text-sm text-gray-600">2024</p>
                                             </div>
                                             <div class="w-6 h-6 border border-darkCharcoal rounded-full flex items-center justify-center group-hover:bg-darkCharcoal group-hover:text-white transition-all duration-300">
                                                 <span class="text-xs">→</span>
@@ -1776,7 +1814,7 @@
             <!-- Left side - Interior Image -->
             <div class="relative min-h-[320px] lg:col-span-6">
                 <img 
-                    src="1.jpg"
+                    src="6d.jpg"
                     alt="Modern luxury interior design"
                     class="w-full h-full object-cover"
                 />
@@ -1890,6 +1928,8 @@
         let currentProject = 0;
         let currentImageIndex = 0;
         let detailsOpen = false;
+        let activeGalleryLayer = 'primary';
+        let galleryTransitionId = 0;
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         // Portfolio slider functionality
@@ -1969,11 +2009,73 @@
             }
         }
 
+        function getGalleryLayers() {
+            return {
+                primary: document.getElementById('modalImagePrimary'),
+                secondary: document.getElementById('modalImageSecondary'),
+            };
+        }
+
+        function setActiveGalleryLayer(nextLayerKey) {
+            const layers = getGalleryLayers();
+
+            Object.entries(layers).forEach(([key, layer]) => {
+                if (!layer) return;
+                layer.classList.toggle('active', key === nextLayerKey);
+            });
+
+            activeGalleryLayer = nextLayerKey;
+        }
+
+        function showModalImage(imageSrc, options = {}) {
+            const { animate = true } = options;
+            const layers = getGalleryLayers();
+            const currentLayer = layers[activeGalleryLayer];
+            const nextLayerKey = activeGalleryLayer === 'primary' ? 'secondary' : 'primary';
+            const nextLayer = layers[nextLayerKey];
+            const transitionId = ++galleryTransitionId;
+
+            if (!currentLayer || !nextLayer) return;
+
+            if (!animate || prefersReducedMotion || !currentLayer.src) {
+                currentLayer.src = imageSrc;
+                currentLayer.alt = 'Project Image';
+                nextLayer.src = imageSrc;
+                nextLayer.alt = 'Project Image';
+                setActiveGalleryLayer(activeGalleryLayer);
+                return;
+            }
+
+            const preloadImage = new Image();
+            preloadImage.onload = () => {
+                if (transitionId !== galleryTransitionId) return;
+
+                nextLayer.src = imageSrc;
+                nextLayer.alt = 'Project Image';
+
+                requestAnimationFrame(() => {
+                    setActiveGalleryLayer(nextLayerKey);
+                });
+            };
+
+            preloadImage.onerror = () => {
+                if (transitionId !== galleryTransitionId) return;
+
+                nextLayer.src = imageSrc;
+                nextLayer.alt = 'Project Image';
+                setActiveGalleryLayer(nextLayerKey);
+            };
+
+            preloadImage.src = imageSrc;
+        }
+
         // Modal functionality
         function openProjectModal(projectIndex) {
             currentProject = projectIndex;
             currentImageIndex = 0;
             detailsOpen = true; // Changed to true
+            galleryTransitionId++;
+            activeGalleryLayer = 'primary';
             
             const modal = document.getElementById('projectModal');
             const project = projectsData[projectIndex];
@@ -1991,7 +2093,12 @@
             featuresList.innerHTML = project.features.map(feature => `<li>• ${feature}</li>`).join('');
             
             // Set initial image
-            document.getElementById('modalImage').src = project.images[0];
+            const galleryLayers = getGalleryLayers();
+            galleryLayers.primary.src = project.images[0];
+            galleryLayers.primary.alt = `${project.title} image 1`;
+            galleryLayers.secondary.src = project.images[0];
+            galleryLayers.secondary.alt = `${project.title} image 1`;
+            setActiveGalleryLayer('primary');
             document.getElementById('currentImageIndex').textContent = '1';
             document.getElementById('totalImages').textContent = project.images.length;
             
@@ -2007,6 +2114,7 @@
             const modal = document.getElementById('projectModal');
             modal.classList.remove('active');
             document.body.style.overflow = 'auto';
+            galleryTransitionId++;
         }
 
         function changeGalleryImage(direction) {
@@ -2019,13 +2127,8 @@
                 currentImageIndex = 0;
             }
             
-            document.getElementById('modalImage').style.opacity = '0';
-            
-            setTimeout(() => {
-                document.getElementById('modalImage').src = project.images[currentImageIndex];
-                document.getElementById('currentImageIndex').textContent = currentImageIndex + 1;
-                document.getElementById('modalImage').style.opacity = '1';
-            }, 150);
+            document.getElementById('currentImageIndex').textContent = currentImageIndex + 1;
+            showModalImage(project.images[currentImageIndex]);
         }
 
         function toggleDetails() {
