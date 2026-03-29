@@ -17,9 +17,6 @@
         * © 2025 Indian Type Foundry
         */
 
-        /* Satoshi font for body text */
-        @import url('https://api.fontshare.com/v2/css?f[]=boska@200,300,400,500,700&f[]=satoshi@300,400,500,700&display=swap');
-        
         /* Custom Tailwind configuration */
         @layer utilities {
             .font-boska {
@@ -86,7 +83,7 @@
         }
 
         .header-brand-note {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Satoshi', sans-serif;
             font-size: 10px;
             letter-spacing: 0.28em;
             text-transform: uppercase;
@@ -110,7 +107,7 @@
             align-items: center;
             justify-content: center;
             padding: 0.95rem 1rem;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Satoshi', sans-serif;
             font-size: 11px;
             letter-spacing: 0.26em;
             text-transform: uppercase;
@@ -150,7 +147,7 @@
             gap: 0.8rem;
             padding: 0.95rem 1.2rem;
             border-left: 1px solid rgba(247, 242, 235, 0.1);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Satoshi', sans-serif;
             font-size: 11px;
             letter-spacing: 0.28em;
             text-transform: uppercase;
@@ -666,7 +663,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Satoshi', sans-serif;
             font-size: 11px;
             letter-spacing: 0.35em;
             text-transform: uppercase;
@@ -703,7 +700,7 @@
         }
 
         .contact-ledger-label {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Satoshi', sans-serif;
             font-size: 11px;
             letter-spacing: 0.28em;
             text-transform: uppercase;
@@ -711,7 +708,7 @@
         }
 
         .contact-ledger-value {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Satoshi', sans-serif;
             font-size: 15px;
             line-height: 1.7;
             color: rgba(247, 242, 235, 0.96);
@@ -764,7 +761,7 @@
             border: 1px solid rgba(247, 242, 235, 0.16);
             background: rgba(10, 10, 10, 0.42);
             padding: 0.55rem 0.9rem;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Satoshi', sans-serif;
             font-size: 10px;
             letter-spacing: 0.24em;
             text-transform: uppercase;
@@ -791,7 +788,7 @@
             align-items: flex-start;
             justify-content: space-between;
             gap: 1rem;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Satoshi', sans-serif;
             font-size: 11px;
             letter-spacing: 0.24em;
             text-transform: uppercase;
@@ -831,7 +828,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.8rem;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Satoshi', sans-serif;
             font-size: 11px;
             letter-spacing: 0.34em;
             text-transform: uppercase;
@@ -848,7 +845,7 @@
 
         .footer-nav-link {
             position: relative;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Satoshi', sans-serif;
             font-size: 12px;
             letter-spacing: 0.28em;
             text-transform: uppercase;
@@ -861,6 +858,98 @@
             transform: translateX(4px);
         }
 
+        .footer-grid {
+            position: relative;
+        }
+
+        .footer-panel {
+            position: relative;
+            min-height: 100%;
+            padding: 1.35rem 0 0.2rem;
+        }
+
+        .footer-panel::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3rem;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(216, 178, 138, 0.86), rgba(216, 178, 138, 0.12));
+        }
+
+        .footer-nav-stack {
+            margin-top: 1.4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .footer-nav-row {
+            display: grid;
+            grid-template-columns: 2.2rem 1fr;
+            align-items: center;
+            gap: 0.9rem;
+            padding-bottom: 0.85rem;
+            border-bottom: 1px solid rgba(232, 221, 212, 0.08);
+        }
+
+        .footer-nav-index {
+            font-family: 'Boska', serif;
+            font-size: 1.35rem;
+            line-height: 1;
+            color: rgba(216, 178, 138, 0.72);
+        }
+
+        .footer-info-stack {
+            margin-top: 1.35rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .footer-info-line {
+            display: block;
+            width: fit-content;
+            max-width: 100%;
+            padding-bottom: 0.85rem;
+            border-bottom: 1px solid rgba(232, 221, 212, 0.08);
+        }
+
+        .footer-hours-panel {
+            padding: 1.35rem 1.35rem 1.1rem;
+            border: 1px solid rgba(232, 221, 212, 0.1);
+            border-radius: 1.2rem;
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018));
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        }
+
+        .footer-hours-label {
+            font-family: 'Satoshi', sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(232, 221, 212, 0.42);
+        }
+
+        .footer-hours-value {
+            margin-top: 1.2rem;
+            font-family: 'Boska', serif;
+            font-size: clamp(2rem, 3vw, 2.65rem);
+            line-height: 0.95;
+            color: rgba(247, 242, 235, 0.95);
+        }
+
+        .footer-hours-note {
+            margin-top: 0.75rem;
+            font-family: 'Satoshi', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(232, 221, 212, 0.5);
+        }
+
         .footer-aside {
             display: flex;
             flex-direction: column;
@@ -871,7 +960,7 @@
 
         .footer-aside-copy {
             max-width: 18rem;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Satoshi', sans-serif;
             font-size: 12px;
             line-height: 1.8;
             letter-spacing: 0.08em;
@@ -883,7 +972,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.85rem;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Satoshi', sans-serif;
             font-size: 11px;
             letter-spacing: 0.28em;
             text-transform: uppercase;
@@ -905,7 +994,7 @@
         }
 
         .footer-meta-label {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Satoshi', sans-serif;
             font-size: 10px;
             letter-spacing: 0.28em;
             text-transform: uppercase;
@@ -913,7 +1002,7 @@
         }
 
         .footer-meta-value {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Satoshi', sans-serif;
             font-size: 14px;
             line-height: 1.7;
             color: rgba(247, 242, 235, 0.88);
@@ -936,6 +1025,10 @@
             .contact-side-note {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+
+            .footer-hours-panel {
+                max-width: 18rem;
             }
         }
 
@@ -1240,7 +1333,7 @@
             border-radius: 25px;
             backdrop-filter: blur(10px);
             display: none;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Satoshi', sans-serif;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             font-weight: 500;
