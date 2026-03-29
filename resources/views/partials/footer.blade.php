@@ -65,7 +65,8 @@
                 <div class="footer-panel">
                     <p class="footer-meta-label">Private Line</p>
                     <div class="footer-info-stack">
-                        <a href="tel:+6285172392266" class="footer-meta-value footer-info-line transition-colors hover:text-[#d8b28a]">
+                        <a href="https://wa.me/6285172392266?text=Hello%20I%20am%20interested%20in%20your%20services"
+                            class="footer-meta-value footer-info-line transition-colors hover:text-[#d8b28a]">
                             +62 8517 2392 266
                         </a>
                         <a href="https://www.instagram.com/puncakmasgallery/" target="_blank" rel="noreferrer" class="footer-meta-value footer-info-line transition-colors hover:text-[#d8b28a]">

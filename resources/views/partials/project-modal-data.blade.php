@@ -83,7 +83,7 @@ const projectsData = [
             "Asymetrical Design",
             "Vertical garden"
         ],
-        images: ["6a.jpg", "6b.jpg", "6c.jpg", "6d.jpg", "6e.jpg", "6f.jpg", "6g.jpg"]
+        images: ["6a.jpg", "6h.jpg", "6b.jpg", "6c.jpg", "6d.jpg", "6e.jpg", "6f.jpg", "6g.jpg"]
     },
     {
         title: "SS House",
@@ -97,7 +97,7 @@ const projectsData = [
             "Corner design",
             "Natural stones and glass"
         ],
-        images: ["7a.jpg", "7b.jpg", "7c.jpg", "7d.jpg", "7e.jpg", "7f.jpg"]
+        images: ["7b.jpg", "7g.jpg", "7a.jpg", "7c.jpg", "7d.jpg", "7e.jpg", "7f.jpg"]
     },
     {
         title: "TK House",

@@ -1412,7 +1412,7 @@
     <section id="hero" class="relative h-screen bg-cream overflow-hidden">
         <div class="absolute inset-0">
             <img 
-                src="1d.jpg"
+                src="cover.jpg"
                 alt="Modern luxury interior"
                 class="w-full h-full object-cover hero-media"
             />
@@ -1424,9 +1424,13 @@
         
         <div class="relative h-full flex items-center hero-frame">
             <div class="absolute bottom-12 right-20 hero-intro-item" style="--intro-delay: 320ms;">
-                <button class="bg-darkCharcoal hover:bg-darkCharcoal/90 text-white mx-0 my-10 px-8 py-4 rounded-full font-satoshi text-sm uppercase tracking-widest transition-colors">
+                <a 
+                    href="https://wa.me/6285172392266?text=Hello%20I%20am%20interested%20in%20your%20services"
+                    target="_blank"
+                    class="bg-darkCharcoal hover:bg-darkCharcoal/90 text-white mx-0 my-10 px-8 py-4 rounded-full font-satoshi text-sm uppercase tracking-widest transition-colors inline-block text-center"
+                >
                     GET STARTED WITH US ↗
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -1697,7 +1701,7 @@
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(6)">
                                         <div class="relative overflow-hidden mb-4 flex-1">
                                             <img 
-                                                src="7a.jpg"
+                                                src="7b.jpg"
                                                 alt="SS House"
                                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                             />
@@ -1939,7 +1943,8 @@
                     <div class="contact-ledger">
                         <div class="contact-ledger-item">
                             <p class="contact-ledger-label">Contact Person</p>
-                            <a href="tel:+6285172392266" class="contact-ledger-value contact-ledger-link">
+                            <a  href="https://wa.me/6285172392266?text=Hello%20I%20am%20interested%20in%20your%20services"
+                                class="contact-ledger-value contact-ledger-link">
                                 +62 8517 2392 266 (Sheila)
                             </a>
                         </div>
