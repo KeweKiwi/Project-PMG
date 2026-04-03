@@ -179,9 +179,30 @@
         
         .hero-heading {
             font-family: 'Boska' !important;
-            font-weight: 200px !important;
+            font-weight: 200 !important;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.02em;
+            line-height: 1;
+            letter-spacing: -0.022em;
+        }
+
+        .hero-heading-line {
+            display: block;
             line-height: 0.9;
-            letter-spacing: -0.02em;
+            white-space: nowrap;
+        }
+
+        .hero-heading-line-last {
+            display: flex;
+            align-items: flex-end;
+            gap: 0.08em;
+            white-space: nowrap;
+        }
+
+        .hero-heading-line-last .h3-about-celcius {
+            transform: translateY(-0.08em);
         }
 
         .h3-about {
@@ -196,7 +217,7 @@
             font-family: 'Satoshi', sans-serif;
             font-size: 25px;
             font-weight: 300;
-            line-height: 1.6;
+            line-height: 1;
             letter-spacing: -0.02em;
         }
 
@@ -314,6 +335,10 @@
             will-change: transform, opacity, filter;
             backface-visibility: hidden;
             transform: translateZ(0);
+        }
+
+        .project-thumb {
+            aspect-ratio: 4 / 3;
         }
 
         @keyframes heroSheenSweep {
@@ -824,6 +849,10 @@
             z-index: 1;
         }
 
+        .footer-main {
+            align-items: start;
+        }
+
         .footer-mark {
             display: inline-flex;
             align-items: center;
@@ -843,19 +872,49 @@
             background: linear-gradient(90deg, rgba(210, 105, 30, 0.92), rgba(210, 105, 30, 0.14));
         }
 
-        .footer-nav-link {
-            position: relative;
-            font-family: 'Satoshi', sans-serif;
-            font-size: 12px;
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
-            color: rgba(232, 221, 212, 0.72);
-            transition: color 400ms ease, transform 400ms ease;
+        .footer-brand-column,
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
         }
 
-        .footer-nav-link:hover {
-            color: rgba(247, 242, 235, 0.98);
-            transform: translateX(4px);
+        .footer-summary {
+            max-width: 42rem;
+            font-family: 'Satoshi', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: rgba(232, 221, 212, 0.66);
+        }
+
+        .footer-summary-left {
+            max-width: 20rem;
+        }
+
+        .footer-column-title {
+            font-family: 'Satoshi', sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(232, 221, 212, 0.42);
+        }
+
+        .footer-links-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.8rem 2rem;
+        }
+
+        .footer-link-item {
+            font-family: 'Satoshi', sans-serif;
+            font-size: 12px;
+            color: rgba(247, 242, 235, 0.88);
+            transition: color 300ms ease, transform 300ms ease;
+        }
+
+        .footer-link-item:hover {
+            color: #d8b28a;
+            transform: translateX(3px);
         }
 
         .footer-grid {
@@ -878,27 +937,61 @@
             background: linear-gradient(90deg, rgba(216, 178, 138, 0.86), rgba(216, 178, 138, 0.12));
         }
 
-        .footer-nav-stack {
-            margin-top: 1.4rem;
+        .footer-contact-top {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+
+        .footer-contact-mini {
             display: flex;
             flex-direction: column;
-            gap: 0.85rem;
+            gap: 0.55rem;
+            color: rgba(247, 242, 235, 0.88);
         }
 
-        .footer-nav-row {
-            display: grid;
-            grid-template-columns: 2.2rem 1fr;
+        .footer-contact-mini-label {
+            display: inline-flex;
             align-items: center;
-            gap: 0.9rem;
-            padding-bottom: 0.85rem;
-            border-bottom: 1px solid rgba(232, 221, 212, 0.08);
+            gap: 0.55rem;
+            font-family: 'Satoshi', sans-serif;
+            font-size: 11px;
+            color: rgba(232, 221, 212, 0.7);
         }
 
-        .footer-nav-index {
-            font-family: 'Boska', serif;
-            font-size: 1.35rem;
-            line-height: 1;
-            color: rgba(216, 178, 138, 0.72);
+        .footer-contact-mini-value {
+            font-family: 'Satoshi', sans-serif;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 0.7rem;
+        }
+
+        .footer-social-link {
+            width: 2.3rem;
+            height: 2.3rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            border: 1px solid rgba(216, 178, 138, 0.16);
+            background: rgba(216, 178, 138, 0.06);
+            color: rgba(216, 178, 138, 0.9);
+            transition: transform 300ms ease, border-color 300ms ease, color 300ms ease, background-color 300ms ease;
+        }
+
+        .footer-social-link:hover {
+            transform: translateY(-1px);
+            border-color: rgba(216, 178, 138, 0.3);
+            color: #f7f2eb;
+            background: rgba(216, 178, 138, 0.12);
+        }
+
+        .footer-contact-address {
+            margin-top: 0.25rem;
         }
 
         .footer-info-stack {
@@ -909,11 +1002,38 @@
         }
 
         .footer-info-line {
-            display: block;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
             width: fit-content;
             max-width: 100%;
             padding-bottom: 0.85rem;
             border-bottom: 1px solid rgba(232, 221, 212, 0.08);
+        }
+
+        .footer-info-icon-shell {
+            width: 2rem;
+            height: 2rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 1px solid rgba(216, 178, 138, 0.18);
+            border-radius: 999px;
+            background: rgba(216, 178, 138, 0.06);
+            color: rgba(216, 178, 138, 0.86);
+            margin-top: 0.05rem;
+        }
+
+        .footer-info-icon {
+            width: 0.95rem;
+            height: 0.95rem;
+            display: block;
+        }
+
+        .footer-info-content {
+            min-width: 0;
+            flex: 1 1 auto;
         }
 
         .footer-hours-panel {
@@ -993,6 +1113,15 @@
             transform: translateX(4px);
         }
 
+        .footer-bottom {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-bottom-tagline {
+            color: rgba(157, 148, 141, 0.82);
+        }
+
         .footer-meta-label {
             font-family: 'Satoshi', sans-serif;
             font-size: 10px;
@@ -1009,6 +1138,55 @@
         }
 
         @media (max-width: 1023px) {
+            .footer-summary {
+                max-width: 34rem;
+            }
+
+            .footer-main {
+                gap: 2rem;
+            }
+
+            .footer-contact-top {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .footer-info-stack {
+                gap: 0.65rem;
+            }
+
+            .footer-info-line {
+                width: 100%;
+                padding-bottom: 0.7rem;
+            }
+        }
+
+        @media (max-width: 1279px) {
+            #projectsSlider .project-card-shell {
+                border-right: 0 !important;
+                border-bottom: 1px solid rgb(209 213 219);
+            }
+
+            #projectsSlider .min-w-full > .project-card-shell:last-child {
+                border-bottom: 0 !important;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1279px) {
+            #projectsSlider .projects-slide-center-tail > .project-card-shell:last-child {
+                grid-column: 1 / -1;
+                width: min(100%, 36rem);
+                justify-self: center;
+                border-right: 0 !important;
+                border-bottom: 0 !important;
+            }
+        }
+
+        @media (max-width: 1023px) {
+            .ambient-orb {
+                display: none;
+            }
+
             .header-brand {
                 padding-right: 0.8rem;
             }
@@ -1027,31 +1205,425 @@
                 align-items: flex-start;
             }
 
-            .footer-hours-panel {
-                max-width: 18rem;
+            .timeline-step-shell {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.25rem;
+            }
+
+            .timeline-step-shell .max-w-md {
+                max-width: none;
+            }
+
+            .modal-content {
+                padding-left: 0;
+                padding-top: min(48svh, 30rem);
+                height: 100svh;
+            }
+
+            .project-details {
+                position: absolute;
+                inset: 0 0 auto 0;
+                width: 100%;
+                max-width: none;
+                height: min(48svh, 30rem);
+                bottom: auto;
+                padding: 70px 28px 28px;
+                border-bottom-left-radius: 1.4rem;
+                border-bottom-right-radius: 1.4rem;
+                box-shadow: 0 16px 50px rgba(0, 0, 0, 0.28);
+            }
+
+            .gallery-nav-btn.prev {
+                left: 18px;
+            }
+
+            .gallery-nav-btn {
+                top: auto;
+                bottom: 26px;
+                transform: none;
+            }
+
+            .gallery-nav-btn.next {
+                right: 18px;
+            }
+
+            .project-details.hidden {
+                transform: translateY(-106%);
+            }
+
+            .project-details.hidden ~ .modal-content {
+                padding-top: 0;
+            }
+
+            .project-details.hidden ~ .modal-content .gallery-nav-btn.prev {
+                left: 18px;
+            }
+
+            .contact-map-frame {
+                height: 10rem;
+            }
+
+            #projectsSlider .project-card-shell {
+                min-height: auto;
+                padding: 1.25rem;
+            }
+
+            #projectsSlider .project-card-shell .project-thumb {
+                margin-bottom: 1rem;
+            }
+
+            #projects .absolute.inset-0.pointer-events-none {
+                display: none;
+            }
+
+            #timeline .absolute.left-0.top-0.w-px.h-full {
+                display: none;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .about-lead-column .hero-heading {
+                font-size: clamp(4.75rem, 9.4vw, 6.2rem) !important;
+                gap: 0.04em;
+                letter-spacing: -0.02em;
+            }
+
+            .about-lead-column .h3-about-celcius {
+                font-size: 2rem;
+            }
+
+            .projects-intro-column {
+                justify-content: flex-start;
+                padding-top: 3rem;
+                padding-bottom: 2rem;
+            }
+
+            .projects-intro-copy {
+                max-width: none;
+            }
+
+            .projects-intro-column .h2-porto {
+                font-size: clamp(3.7rem, 7.6vw, 4.9rem);
+                line-height: 0.92;
+                letter-spacing: -0.022em;
+            }
+
+            .projects-intro-brand {
+                margin-top: 1.5rem;
+            }
+
+            .projects-grid-column {
+                padding-left: 0;
             }
         }
 
         @media (max-width: 767px) {
             .header-shell {
-                gap: 0.4rem;
+                gap: 0.55rem;
+                flex-wrap: wrap;
+                border-radius: 1.5rem;
+                padding: 0.35rem;
             }
 
             .header-brand {
+                flex: 1 1 auto;
                 padding: 0.7rem 0.85rem 0.7rem 1rem;
             }
 
             .header-brand::after {
-                height: 1.75rem;
+                display: none;
             }
 
             .header-logo {
                 height: 1.7rem;
             }
 
+            .header-nav {
+                order: 3;
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 0.35rem;
+                padding: 0.15rem 0.15rem 0.2rem;
+            }
+
+            .header-link {
+                padding: 0.8rem 0.5rem;
+                font-size: 10px;
+                letter-spacing: 0.16em;
+                border-radius: 999px;
+                background: rgba(255, 255, 255, 0.035);
+            }
+
+            .header-link::after {
+                display: none;
+            }
+
             .header-cta {
+                margin-left: auto;
                 padding: 0.85rem 1rem;
                 border-left: 0;
+                border: 1px solid rgba(247, 242, 235, 0.12);
+                border-radius: 999px;
+                font-size: 10px;
+                letter-spacing: 0.16em;
+            }
+
+            .hero-heading {
+                font-size: clamp(2.9rem, 13vw, 4rem) !important;
+                gap: 0.08em;
+                letter-spacing: -0.016em;
+            }
+
+            .hero-heading-line {
+                line-height: 0.92;
+            }
+
+            .hero-heading-line-last {
+                gap: 0.1em;
+                align-items: baseline;
+            }
+
+            .h3-about-celcius {
+                display: inline-block;
+                font-size: 1.45rem;
+                line-height: 1;
+                vertical-align: baseline;
+            }
+
+            .h2-porto {
+                font-size: 3.45rem;
+                line-height: 0.92;
+                letter-spacing: -0.022em;
+            }
+
+            .projects-intro-column {
+                padding-top: 2.5rem;
+                padding-bottom: 1.75rem;
+            }
+
+            .projects-intro-copy {
+                padding-right: 0;
+            }
+
+            .projects-intro-brand {
+                margin-top: 1.25rem;
+            }
+
+            .projects-intro-brand .font-satoshi {
+                font-size: 12px;
+                letter-spacing: 0.22em;
+            }
+
+            .h2-timeline {
+                font-size: 3.25rem;
+            }
+
+            .h3-about {
+                font-size: 1.85rem;
+                line-height: 1.25;
+            }
+
+            .footer-shell {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .footer-main {
+                gap: 3.1rem;
+                justify-items: center;
+                text-align: center;
+            }
+
+            .footer-brand-column,
+            .footer-column {
+                width: 100%;
+                max-width: 24rem;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-mark {
+                justify-content: center;
+                gap: 0.95rem;
+                letter-spacing: 0.3em;
+            }
+
+            .footer-summary {
+                font-size: 0.9rem;
+                line-height: 1.7;
+                max-width: 22rem;
+                margin-inline: auto;
+            }
+
+            .footer-summary-left {
+                max-width: 22rem;
+            }
+
+            .footer-back-link {
+                justify-content: center;
+            }
+
+            .footer-column-title {
+                text-align: center;
+            }
+
+            .footer-links-grid {
+                grid-template-columns: 1fr 1fr;
+                width: min(100%, 18rem);
+                gap: 0.9rem 1.1rem;
+                justify-items: center;
+            }
+
+            .footer-link-item {
+                font-size: 13px;
+            }
+
+            .offer-item {
+                grid-template-columns: 2.9rem 1fr;
+                gap: 0.9rem;
+            }
+
+            .offer-text {
+                font-size: 15px;
+            }
+
+            .gallery-stage {
+                padding: 0.85rem;
+            }
+
+            .project-thumb {
+                aspect-ratio: 16 / 11;
+            }
+
+            .footer-column:last-child {
+                gap: 1.5rem;
+            }
+
+            .footer-contact-address {
+                order: 1;
+                margin-top: 0;
+                width: 100%;
+                align-items: center;
+            }
+
+            .footer-contact-top {
+                order: 2;
+                width: min(100%, 20rem);
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1.25rem;
+                justify-items: center;
+            }
+
+            .footer-contact-mini {
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-contact-mini-label {
+                justify-content: center;
+            }
+
+            .footer-contact-mini-value {
+                font-size: 13px;
+            }
+
+            .footer-social-links {
+                justify-content: center;
+            }
+
+            .footer-info-stack {
+                width: 100%;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .footer-info-line {
+                width: min(100%, 23rem);
+                justify-content: center;
+                margin-inline: auto;
+                text-align: center;
+            }
+
+            .footer-info-content {
+                flex: 0 1 auto;
+            }
+
+            .footer-bottom {
+                align-items: center;
+                text-align: center;
+                gap: 0.75rem;
+            }
+
+            .footer-bottom-copy,
+            .footer-bottom-tagline {
+                display: block;
+            }
+
+            .gallery-nav-btn {
+                bottom: 76px;
+            }
+
+            .gallery-nav-btn.prev {
+                left: 12px;
+            }
+
+            .gallery-nav-btn.next {
+                right: 12px;
+            }
+
+            .project-details.hidden ~ .modal-content .gallery-nav-btn.prev {
+                left: 12px;
+            }
+
+            .image-counter {
+                bottom: 18px;
+                font-size: 12px;
+                padding: 7px 14px;
+            }
+
+            .project-details {
+                height: min(62svh, 36rem);
+                padding: 68px 18px 24px;
+            }
+
+            .modal-content {
+                padding-top: min(62svh, 36rem);
+            }
+
+            .project-details.hidden {
+                transform: translateY(-108%);
+            }
+
+            .close-modal {
+                top: 12px;
+                right: 18px;
+                font-size: 34px;
+            }
+
+            .details-toggle {
+                left: 14px !important;
+                right: auto !important;
+                top: 16px !important;
+                background: rgba(255, 255, 255, 0.96);
+            }
+
+            .reopen-details-btn {
+                left: 14px;
+                top: 14px;
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+
+            #projects .flex.justify-center.items-center.py-8.bg-lightGray > div {
+                gap: 1rem;
+            }
+
+            #projects #prevBtn,
+            #projects #nextBtn {
+                width: 2.8rem;
+                height: 2.8rem;
             }
         }
 
@@ -1347,6 +1919,122 @@
             display: block;
         }
 
+        @media (max-width: 1023px) {
+            .modal-content {
+                padding-left: 0;
+                padding-top: min(48svh, 30rem);
+                height: 100svh;
+            }
+
+            .project-details {
+                position: absolute;
+                inset: 0 0 auto 0;
+                width: 100%;
+                max-width: none;
+                height: min(48svh, 30rem);
+                bottom: auto;
+                padding: 70px 28px 28px;
+                border-bottom-left-radius: 1.4rem;
+                border-bottom-right-radius: 1.4rem;
+                box-shadow: 0 16px 50px rgba(0, 0, 0, 0.28);
+            }
+
+            .project-details.hidden {
+                transform: translateY(-106%);
+            }
+
+            .project-details.hidden ~ .modal-content {
+                padding-top: 0;
+            }
+
+            .gallery-nav-btn {
+                top: auto;
+                bottom: 26px;
+                transform: none;
+            }
+
+            .gallery-nav-btn.prev,
+            .project-details.hidden ~ .modal-content .gallery-nav-btn.prev {
+                left: 18px;
+            }
+
+            .gallery-nav-btn.next {
+                right: 18px;
+            }
+
+            .details-toggle {
+                display: none !important;
+            }
+
+            .close-modal {
+                top: 14px;
+                right: 18px;
+                width: 3rem;
+                height: 3rem;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 999px;
+                color: #1f1f1f;
+                background: rgba(255, 255, 255, 0.96);
+                border: 1px solid rgba(44, 44, 44, 0.12);
+                box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .modal-content {
+                padding-top: min(62svh, 36rem);
+            }
+
+            .project-details {
+                height: min(62svh, 36rem);
+                padding: 68px 18px 24px;
+            }
+
+            .project-details.hidden {
+                transform: translateY(-108%);
+            }
+
+            .gallery-stage {
+                padding: 0.85rem;
+            }
+
+            .gallery-nav-btn {
+                bottom: 76px;
+            }
+
+            .gallery-nav-btn.prev,
+            .project-details.hidden ~ .modal-content .gallery-nav-btn.prev {
+                left: 12px;
+            }
+
+            .gallery-nav-btn.next {
+                right: 12px;
+            }
+
+            .image-counter {
+                bottom: 18px;
+                font-size: 12px;
+                padding: 7px 14px;
+            }
+
+            .close-modal {
+                top: 12px;
+                right: 18px;
+                width: 2.9rem;
+                height: 2.9rem;
+                font-size: 32px;
+            }
+
+            .reopen-details-btn {
+                left: 14px;
+                top: 14px;
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+        }
+
         /**
         * @license
         *
@@ -1409,7 +2097,7 @@
     @include('partials.header')
 
     <!-- Hero Section -->
-    <section id="hero" class="relative h-screen bg-cream overflow-hidden">
+    <section id="hero" class="relative min-h-[100svh] bg-cream overflow-hidden">
         <div class="absolute inset-0">
             <img 
                 src="cover.jpg"
@@ -1422,12 +2110,12 @@
             <div class="ambient-orb luxury-parallax absolute bottom-[14%] left-[8%] h-32 w-32 rounded-full border border-white/20" data-parallax-speed="0.1"></div>
         </div>
         
-        <div class="relative h-full flex items-center hero-frame">
-            <div class="absolute bottom-12 right-20 hero-intro-item" style="--intro-delay: 320ms;">
+        <div class="relative flex min-h-[100svh] items-end md:h-full md:items-center hero-frame">
+            <div class="absolute bottom-8 left-4 right-4 md:bottom-12 md:left-auto md:right-20 hero-intro-item" style="--intro-delay: 320ms;">
                 <a 
                     href="https://wa.me/6285172392266?text=Hello%20I%20am%20interested%20in%20your%20services"
                     target="_blank"
-                    class="bg-darkCharcoal hover:bg-darkCharcoal/90 text-white mx-0 my-10 px-8 py-4 rounded-full font-satoshi text-sm uppercase tracking-widest transition-colors inline-block text-center"
+                    class="bg-darkCharcoal hover:bg-darkCharcoal/90 text-white mx-0 my-10 px-8 py-4 rounded-full font-satoshi text-sm uppercase tracking-widest transition-colors inline-block w-full md:w-auto text-center"
                 >
                     GET STARTED WITH US ↗
                 </a>
@@ -1436,18 +2124,19 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 bg-lightGray section-divider">
-        <div class="px-6">
-            <div class="grid grid-cols-12 gap-16">
+    <section id="about" class="py-16 md:py-24 bg-lightGray section-divider">
+        <div class="px-4 md:px-6">
+            <div class="grid grid-cols-12 gap-10 md:gap-16">
                 <!-- Left column - Large heading -->
-                <div class="col-span-12 lg:col-span-4 relative">
+                <div class="about-lead-column col-span-12 lg:col-span-4 relative">
                     <div class="pl-0">
-                        <h1 class="hero-heading text-5xl lg:text-7xl xl:text-8xl text-darkCharcoal mb-8">
-                            FROM
-                            <br />
-                            THE GROUND,
-                            <br />
-                            UNTIL NOW. <span class="h3-about-celcius text-darkCharcoal">©</span> 
+                        <h1 class="hero-heading text-4xl md:text-5xl lg:text-7xl xl:text-8xl text-darkCharcoal mb-8">
+                            <span class="hero-heading-line">FROM</span>
+                            <span class="hero-heading-line">THE GROUND,</span>
+                            <span class="hero-heading-line hero-heading-line-last">
+                                <span>UNTIL NOW.</span>
+                                <span class="h3-about-celcius text-darkCharcoal">©</span>
+                            </span>
                         </h1>
                     </div>
                 </div>
@@ -1504,13 +2193,6 @@
                                 </p>
                             </div>
                         </div>
-                        
-                        <!-- Bottom section with button -->
-                        <div class="md:col-span-2 pt-8 border-t border-gray-300">
-                            <button class="readmore-about uppercase tracking-widest border-b border-darkCharcoal pb-1 hover:text-accentOrange transition-colors">
-                                READ MORE ABOUT US
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1527,12 +2209,12 @@
             </div>
         </div>
 
-        <div class="px-6 relative">
-            <div class="grid grid-cols-12 min-h-[600px] relative">
+        <div class="px-4 md:px-6 relative">
+            <div class="grid grid-cols-12 md:min-h-[600px] relative">
 
                 <!-- Left column - Text content -->
-                <div class="col-span-12 lg:col-span-3 relative flex flex-col justify-center py-16">
-                    <div class="pl-0 pr-8">
+                <div class="projects-intro-column col-span-12 md:col-span-5 xl:col-span-3 relative flex flex-col justify-center py-12 md:py-16">
+                    <div class="projects-intro-copy pl-0 pr-8">
                         <h2 class="h2-porto mb-8">
                             Rooted in
                             <br />
@@ -1544,7 +2226,7 @@
                         </h2>
                     </div>
                     
-                    <div class="absolute bottom-8 left-0">
+                    <div class="projects-intro-brand mt-8 lg:absolute lg:bottom-8 lg:left-0">
                         <div class="font-satoshi text-xs uppercase tracking-widest text-gray-600">
                             PUNCAK MAS GALLERY™
                         </div>
@@ -1552,16 +2234,16 @@
                 </div>
                 
                 <!-- Right column - Projects Container -->
-                <div class="col-span-12 lg:col-span-9 relative lg:border-l border-gray-300">
+                <div class="projects-grid-column col-span-12 md:col-span-7 xl:col-span-9 relative md:border-l border-gray-300">
                     <!-- Projects Slider Container -->
                     <div class="relative h-full overflow-hidden">
                         <div id="projectsSlider" class="flex transition-transform duration-500 ease-in-out h-full">
                             <!-- Slide 1 - First 3 projects -->
-                            <div class="min-w-full grid grid-cols-3 h-full">
+                            <div class="projects-slide-center-tail min-w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 h-full">
                                 <!-- Project 1 -->
                                 <div class="project-card-shell relative border-r border-gray-300 p-6 flex flex-col justify-between min-h-[300px]">
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(0)">
-                                        <div class="relative overflow-hidden mb-4 flex-1">
+                                        <div class="project-thumb relative overflow-hidden mb-4 flex-1">
                                             <img 
                                                 src="1e.png"
                                                 alt="Commercial Lobby"
@@ -1583,7 +2265,7 @@
                                 <!-- Project 2 -->
                                 <div class="project-card-shell relative border-r border-gray-300 p-6 flex flex-col justify-between min-h-[300px]">
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(1)">
-                                        <div class="relative overflow-hidden mb-4 flex-1">
+                                        <div class="project-thumb relative overflow-hidden mb-4 flex-1">
                                             <img 
                                                 src="2a.jpg"
                                                 alt="AS House"
@@ -1605,7 +2287,7 @@
                                 <!-- Project 3 -->
                                 <div class="project-card-shell relative p-6 flex flex-col justify-between min-h-[300px]">
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(2)">
-                                        <div class="relative overflow-hidden mb-4 flex-1">
+                                        <div class="project-thumb relative overflow-hidden mb-4 flex-1">
                                             <img 
                                                 src="3c.jpg"
                                                 alt="BL HOUSE"
@@ -1626,11 +2308,11 @@
                             </div>
 
                             <!-- Slide 2 - Next 3 projects -->
-                            <div class="min-w-full grid grid-cols-3 h-full">
+                            <div class="projects-slide-center-tail min-w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 h-full">
                                 <!-- Project 4 -->
                                 <div class="project-card-shell relative border-r border-gray-300 p-6 flex flex-col justify-between min-h-[300px]">
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(3)">
-                                        <div class="relative overflow-hidden mb-4 flex-1">
+                                        <div class="project-thumb relative overflow-hidden mb-4 flex-1">
                                             <img 
                                                 src="4a.jpg"
                                                 alt="GO House"
@@ -1652,7 +2334,7 @@
                                 <!-- Project 5 -->
                                 <div class="project-card-shell relative border-r border-gray-300 p-6 flex flex-col justify-between min-h-[300px]">
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(4)">
-                                        <div class="relative overflow-hidden mb-4 flex-1">
+                                        <div class="project-thumb relative overflow-hidden mb-4 flex-1">
                                             <img 
                                                 src="5a.jpg"
                                                 alt="EC HOUSE"
@@ -1674,7 +2356,7 @@
                                 <!-- Project 6 -->
                                 <div class="project-card-shell relative p-6 flex flex-col justify-between min-h-[300px]">
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(5)">
-                                        <div class="relative overflow-hidden mb-4 flex-1">
+                                        <div class="project-thumb relative overflow-hidden mb-4 flex-1">
                                             <img 
                                                 src="6a.jpg"
                                                 alt="YG House"
@@ -1695,11 +2377,11 @@
                             </div>
 
                             <!-- Slide 3 - Last 2 projects -->
-                            <div class="min-w-full grid grid-cols-3 h-full">
+                            <div class="min-w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 h-full">
                                 <!-- Project 7 -->
                                 <div class="project-card-shell relative border-r border-gray-300 p-6 flex flex-col justify-between min-h-[300px]">
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(6)">
-                                        <div class="relative overflow-hidden mb-4 flex-1">
+                                        <div class="project-thumb relative overflow-hidden mb-4 flex-1">
                                             <img 
                                                 src="7b.jpg"
                                                 alt="SS House"
@@ -1721,7 +2403,7 @@
                                 <!-- Project 8 -->
                                 <div class="project-card-shell relative border-r border-gray-300 p-6 flex flex-col justify-between min-h-[300px]">
                                     <div class="group cursor-pointer h-full flex flex-col" onclick="openProjectModal(7)">
-                                        <div class="relative overflow-hidden mb-4 flex-1">
+                                        <div class="project-thumb relative overflow-hidden mb-4 flex-1">
                                             <img 
                                                 src="8a.jpg"
                                                 alt="TK House"
@@ -1741,7 +2423,7 @@
                                 </div>
 
                                 <!-- Empty third column for last slide -->
-                                <div class="relative p-6"></div>
+                                <div class="relative p-6 hidden xl:block"></div>
                             </div>
                         </div>
                     </div>
@@ -1780,9 +2462,9 @@
     @include('partials.project-modal')
 
     <!-- Timeline Section -->
-    <section id="timeline" class="py-24 bg-white section-divider">
-        <div class="px-6">
-            <div class="grid grid-cols-12 gap-12">
+    <section id="timeline" class="py-16 md:py-24 bg-white section-divider">
+        <div class="px-4 md:px-6">
+            <div class="grid grid-cols-12 gap-10 md:gap-12">
                 <!-- Left column -->
                 <div class="col-span-12 lg:col-span-4 relative">
                     <div class="absolute left-0 top-0 w-px h-full"></div>
@@ -1794,7 +2476,7 @@
                         </h2>
                     </div>
                     
-                    <div class="absolute bottom-0 left-0">
+                    <div class="mt-8 lg:absolute lg:bottom-0 lg:left-0">
                         <div class="font-satoshi text-xs uppercase tracking-widest">
                             PUNCAK MAS GALLERY™
                         </div>
@@ -1906,8 +2588,8 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="relative min-h-screen bg-black text-white section-divider">
-        <div class="absolute inset-0 grid grid-cols-1 lg:grid-cols-12">
+    <section id="contact" class="relative min-h-[100svh] bg-black text-white section-divider">
+        <div class="grid min-h-[100svh] grid-cols-1 lg:grid-cols-12">
             <!-- Left side - Interior Image -->
             <div class="relative min-h-[320px] lg:col-span-6">
                 <img 
@@ -1919,7 +2601,7 @@
                 <div class="absolute inset-0 bg-black/10"></div>
                 
                 <!-- PMG Logo/Watermark -->
-                <div class="absolute bottom-8 left-8">
+                <div class="absolute bottom-6 left-6 md:bottom-8 md:left-8">
                     <div class="w-12 h-12 border-2 border-white flex items-center justify-center">
                         <span class="font-boska text-white text-lg font-medium">P</span>
                     </div>
@@ -2202,7 +2884,7 @@
             
             // Show details panel by default
             document.getElementById('projectDetails').classList.remove('hidden');
-            document.getElementById('detailsArrow').textContent = '×';
+            document.getElementById('detailsArrow').textContent = '‹';
             
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -2236,11 +2918,16 @@
             
             if (detailsOpen) {
                 detailsPanel.classList.remove('hidden');
-                arrow.textContent = '×';
+                arrow.textContent = '‹';
             } else {
                 detailsPanel.classList.add('hidden');
-                arrow.textContent = '→';
+                arrow.textContent = '›';
             }
+        }
+
+        function handleGalleryStageTap() {
+            if (window.innerWidth > 1023 || !detailsOpen) return;
+            toggleDetails();
         }
 
         function initLuxuryScrollAnimations() {

@@ -5,11 +5,11 @@
     <!-- Project Details Panel -->
     <div id="projectDetails" class="project-details">
         <!-- Close Details Button (inside panel) -->
-        <button class="details-toggle" onclick="toggleDetails()">
-            <span id="detailsArrow">×</span>
+        <button class="details-toggle" onclick="toggleDetails()" aria-label="Hide details panel">
+            <span id="detailsArrow">‹</span>
         </button>
         
-        <h2 class="font-boska text-4xl mb-6" id="modalProjectTitle">Modern Living Room</h2>
+        <h2 class="font-boska text-3xl md:text-4xl mb-6" id="modalProjectTitle">Modern Living Room</h2>
         
         <div class="mb-8">
             <h3 class="font-satoshi text-sm uppercase tracking-widest mb-3 text-gray-600">PROJECT DESCRIPTION</h3>
@@ -30,7 +30,7 @@
         
         <div class="mb-8">
             <h3 class="font-satoshi text-sm uppercase tracking-widest mb-3 text-gray-600">PROJECT DETAILS</h3>
-            <div class="grid grid-cols-2 gap-4 font-satoshi text-sm">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-satoshi text-sm">
                 <div>
                     <p class="text-gray-600">Year</p>
                     <p class="font-medium" id="modalProjectYear">2023</p>
@@ -67,7 +67,7 @@
         </button>
         
         <!-- Gallery Images Container -->
-        <div class="gallery-stage">
+        <div class="gallery-stage" onclick="handleGalleryStageTap()">
             <div class="gallery-viewport">
                 <img id="modalImagePrimary" class="gallery-image active" src="" alt="Project Image">
                 <img id="modalImageSecondary" class="gallery-image" src="" alt="Project Image">

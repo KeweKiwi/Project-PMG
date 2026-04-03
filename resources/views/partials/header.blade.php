@@ -7,7 +7,7 @@
                 <span class="header-brand-note">Luxury Interior & Furniture</span>
             </a>
 
-            <nav class="header-nav hidden md:flex hero-intro-item" style="--intro-delay: 180ms;">
+            <nav class="header-nav hero-intro-item" style="--intro-delay: 180ms;">
                 <a href="#about" class="header-link">About</a>
                 <a href="#projects" class="header-link">Projects</a>
                 <a href="#timeline" class="header-link">Process</a>
