@@ -31,6 +31,19 @@
             color: #F7F2EB;
         }
 
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        img,
+        svg,
+        video,
+        canvas {
+            max-width: 100%;
+        }
+
         .header-shell {
             position: relative;
             display: flex;
@@ -224,6 +237,7 @@
         .p-about {
             font-family: 'Satoshi', sans-serif;
             font-size: 15px;
+            overflow-wrap: anywhere;
         }
         
         .readmore-about {
@@ -1324,10 +1338,12 @@
                 flex-wrap: wrap;
                 border-radius: 1.5rem;
                 padding: 0.35rem;
+                max-width: 100%;
             }
 
             .header-brand {
                 flex: 1 1 auto;
+                min-width: 0;
                 padding: 0.7rem 0.85rem 0.7rem 1rem;
             }
 
@@ -1342,6 +1358,7 @@
             .header-nav {
                 order: 3;
                 width: 100%;
+                min-width: 0;
                 display: grid;
                 grid-template-columns: repeat(3, minmax(0, 1fr));
                 gap: 0.35rem;
@@ -1362,6 +1379,7 @@
 
             .header-cta {
                 margin-left: auto;
+                min-width: 0;
                 padding: 0.85rem 1rem;
                 border-left: 0;
                 border: 1px solid rgba(247, 242, 235, 0.12);
@@ -1372,17 +1390,23 @@
 
             .hero-heading {
                 font-size: clamp(2.9rem, 13vw, 4rem) !important;
+                max-width: 100%;
                 gap: 0.08em;
                 letter-spacing: -0.016em;
             }
 
             .hero-heading-line {
+                max-width: 100%;
                 line-height: 0.92;
+                white-space: normal;
             }
 
             .hero-heading-line-last {
+                max-width: 100%;
                 gap: 0.1em;
                 align-items: baseline;
+                white-space: normal;
+                flex-wrap: wrap;
             }
 
             .h3-about-celcius {
@@ -1404,6 +1428,7 @@
             }
 
             .projects-intro-copy {
+                min-width: 0;
                 padding-right: 0;
             }
 
@@ -1423,6 +1448,16 @@
             .h3-about {
                 font-size: 1.85rem;
                 line-height: 1.25;
+            }
+
+            .p-about,
+            .offer-text,
+            .timeline-body,
+            .contact-ledger-value,
+            .footer-summary,
+            .footer-info-content {
+                overflow-wrap: anywhere;
+                word-break: normal;
             }
 
             .footer-shell {
