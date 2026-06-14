@@ -37,6 +37,17 @@
             overflow-x: hidden;
         }
 
+        :root {
+            --anchor-offset: 7rem;
+        }
+
+        #about,
+        #projects,
+        #timeline,
+        #contact {
+            scroll-margin-top: var(--anchor-offset);
+        }
+
         img,
         svg,
         video,
@@ -537,6 +548,7 @@
         .timeline-step {
             position: relative;
             padding-left: 1.5rem;
+            min-width: 0;
         }
 
         .timeline-step.luxury-scroll-reveal {
@@ -584,6 +596,7 @@
 
         .timeline-step-shell {
             position: relative;
+            min-width: 0;
             padding: 0.25rem 0;
             border-radius: 1.5rem;
             transition:
@@ -608,6 +621,10 @@
                 opacity 650ms ease,
                 transform 650ms cubic-bezier(0.16, 1, 0.3, 1),
                 box-shadow 650ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .timeline-step-shell > * {
+            min-width: 0;
         }
 
         .timeline-step:hover .timeline-step-shell {
@@ -1333,6 +1350,10 @@
         }
 
         @media (max-width: 767px) {
+            :root {
+                --anchor-offset: 10.5rem;
+            }
+
             .header-shell {
                 gap: 0.55rem;
                 flex-wrap: wrap;
@@ -1443,6 +1464,14 @@
 
             .h2-timeline {
                 font-size: 3.25rem;
+            }
+
+            .timeline-step {
+                padding-left: 1rem;
+            }
+
+            .timeline-step-shell {
+                width: 100%;
             }
 
             .h3-about {
@@ -2161,9 +2190,9 @@
     <!-- About Section -->
     <section id="about" class="py-16 md:py-24 bg-lightGray section-divider">
         <div class="px-4 md:px-6">
-            <div class="grid grid-cols-12 gap-10 md:gap-16">
+            <div class="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-16">
                 <!-- Left column - Large heading -->
-                <div class="about-lead-column col-span-12 lg:col-span-4 relative">
+                <div class="about-lead-column min-w-0 md:col-span-12 lg:col-span-4 relative">
                     <div class="pl-0">
                         <h1 class="hero-heading text-4xl md:text-5xl lg:text-7xl xl:text-8xl text-darkCharcoal mb-8">
                             <span class="hero-heading-line">FROM</span>
@@ -2177,7 +2206,7 @@
                 </div>
                 
                 <!-- Right column - Content grid -->
-                <div class="col-span-12 lg:col-span-8">
+                <div class="min-w-0 md:col-span-12 lg:col-span-8">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
                         <!-- Top left -->
                         <div>
@@ -2245,10 +2274,10 @@
         </div>
 
         <div class="px-4 md:px-6 relative">
-            <div class="grid grid-cols-12 md:min-h-[600px] relative">
+            <div class="grid grid-cols-1 md:grid-cols-12 md:min-h-[600px] relative">
 
                 <!-- Left column - Text content -->
-                <div class="projects-intro-column col-span-12 md:col-span-5 xl:col-span-3 relative flex flex-col justify-center py-12 md:py-16">
+                <div class="projects-intro-column min-w-0 md:col-span-5 xl:col-span-3 relative flex flex-col justify-center py-12 md:py-16">
                     <div class="projects-intro-copy pl-0 pr-8">
                         <h2 class="h2-porto mb-8">
                             Rooted in
@@ -2269,7 +2298,7 @@
                 </div>
                 
                 <!-- Right column - Projects Container -->
-                <div class="projects-grid-column col-span-12 md:col-span-7 xl:col-span-9 relative md:border-l border-gray-300">
+                <div class="projects-grid-column min-w-0 md:col-span-7 xl:col-span-9 relative md:border-l border-gray-300">
                     <!-- Projects Slider Container -->
                     <div class="relative h-full overflow-hidden">
                         <div id="projectsSlider" class="flex transition-transform duration-500 ease-in-out h-full">
@@ -2499,9 +2528,9 @@
     <!-- Timeline Section -->
     <section id="timeline" class="py-16 md:py-24 bg-white section-divider">
         <div class="px-4 md:px-6">
-            <div class="grid grid-cols-12 gap-10 md:gap-12">
+            <div class="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-12">
                 <!-- Left column -->
-                <div class="col-span-12 lg:col-span-4 relative">
+                <div class="min-w-0 md:col-span-12 lg:col-span-4 relative">
                     <div class="absolute left-0 top-0 w-px h-full"></div>
                     <div class="pl-0">
                         <h2 class="h2-timeline leading-tight">
@@ -2519,7 +2548,7 @@
                 </div>
                 
                 <!-- Right column - Timeline -->
-                <div class="col-span-12 lg:col-span-8">
+                <div class="min-w-0 md:col-span-12 lg:col-span-8">
                     <div class="space-y-8">
                         <div class="group timeline-step border-b border-warmBeige pb-8 transition-colors duration-500">
                             <div class="timeline-step-shell flex items-start justify-between gap-8">
